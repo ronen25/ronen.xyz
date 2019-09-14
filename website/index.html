@@ -1,93 +1,110 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Ronen Lapushner</title>
+<head>
+    <title>Ronen Lapushner</title>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Website info -->
+    <meta name="description" content="Ronen's portfolio and personal website">
+    <meta name="author" content="Ronen Lapushner">
+    <meta name="keywords" content="ronen.xyz, ronen, lapushner">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato|Roboto&display=swap" rel="stylesheet"> 
+</head>
+<body>
+    <header>
+        <div class="name">
+            RONEN LAPUSHNER
+        </div>
         
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <!-- Website info -->
-        <meta name="description" content="Ronen's portfolio and personal website">
-        <meta name="author" content="Ronen Lapushner">
-        <meta name="keywords" content="ronen.xyz, ronen, lapushner">
-
-        <!-- CSS -->
-        <link rel="stylesheet" type="text/css" href="style.css">
-    </head>
-    <body>
-        <header>
-            <div class="name">
-                RONEN LAPUSHNER
-            </div>
-
-            <div class="buttons">
+        <div class="subtitle">
+            <p>Full stack developer based in Israel</p>
+        </div>
+        
+        <!-- WEBPAGE NAVIGATION BAR -->
+        <nav>
+            <div class="navbar">
+                <!-- About Me -->
+                <a href="#" alt="">About Me</a>
+                
+                <!-- Projects -->
+                <a href="#projects" alt="">Projects</a>
+                
+                <!-- Projects -->
+                <a href="#contact" alt="">Contact</a>
+                
                 <!-- Github link -->
                 <a href="https://github.com/ronen25" 
-                   class="imageLink"
-                   id="link_github" 
-                   alt="Github Profile Link" title="Github Profile Link">
+                    class="imageLink"
+                    id="link_github" 
+                    alt="Github Profile Link" title="Github Profile Link">
                     <img src="./assets/github.svg">
                 </a>
+
                 <!-- Linkedin link -->
                 <a href="https://github.com/ronen25" 
-                   class="imageLink"
-                   id="link_linkedin"
-                   alt="Linkedin Profile Link" title="Linkedin Profile Link">
+                    class="imageLink"
+                    id="link_linkedin"
+                    alt="Linkedin Profile Link" title="Linkedin Profile Link">
                     <img src="./assets/linkedin.svg">
                 </a>
             </div>
+    </nav>
+</header>
 
-            <div class="subtitle">
-                <p>Full stack developer based in Israel</p>
-            </div>
 
-            <!-- WEBPAGE NAVIGATION BAR -->
-            <nav>
-                <div class="navbar">
-                    <!-- About Me -->
-                    <a href="#aboutme" alt="">ABOUT ME</a>
+<!-------------------------------------------------------------------->
+
+<main>
+    <!-- About Me section-->
+    <section id="aboutme">
+        <p>
+            Hi, I'm Ronen, and welcome to my website.
+        </p>
+
+        <p>
+            When creating software, I strive for quality and high maintainability, 
+            as well as practicallity and user-friendly design.
+        </p>     
+            
+        <p>
+            I served in the Israeli Air Force as a C/C++/Java/C# full-stack developer, 
+            discharging honorably in 2016. I then worked at Cyren as a C++ Software Engineer (and a Tech Lead, since May 2018) 
+            until January 2019.
+        </p>
+
+        <p>
+            I am currently enrolled in the Open University of Israel, 
+            studying for a BSc. in Computer Science.
+        </p>
+    </section>
     
-                    <!-- Projects -->
-                    <a href="#projects" alt="">PROJECTS</a>
+    <!-- Projects section-->
+    <section id="project">
+        <h1>
+            Projects
+        </h1>
+    </section>
     
-                    <!-- Projects -->
-                    <a href="#contact" alt="">CONTACT</a>
-                </div>
-            </nav>
-        </header>
+    <!-- Contact section-->
+    <section id="contact">
+        <h1>
+            Contact
+        </h1>
+    </section>
+</main>
 
-        
-        <!-------------------------------------------------------------------->
-        
-        <main>
-            <p>
-                TODO
-            </p>
-            <!-- About Me section-->
-            <section id="aboutme">
-                <h1>
-                    About Me
-                </h1>
-            </section>
-
-            <!-- Projects section-->
-            <section id="project">
-                <h1>
-                    Projects
-                </h1>
-            </section>
-
-            <!-- Contact section-->
-            <section id="contact">
-                <h1>
-                    Contact
-                </h1>
-            </section>
-        </main>
-
-        <!-- FOOTER -->
-        <footer>
-            Copyright &copy; Ronen Lapushner 2019.
-        </footer>
-    </body>
+<!-- FOOTER -->
+<footer>
+    <p>
+        This website was designed from scratch by me using HTML5, CSS3 and vue.js.
+    </p>
+</footer>
+</body>
 </html>
