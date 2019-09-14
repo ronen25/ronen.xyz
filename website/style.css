@@ -95,6 +95,10 @@ footer {
 
 /* Mobile-friendly media query */
 @media(max-width: 800px) {
+    body {
+        width: 95%;
+    }
+
     header .name {
         font-size: 30px;
     }
