@@ -122,7 +122,6 @@ footer {
     }
 
     #contactcard {
-        border-right: none;
         padding: 0;
         margin: 0;
         flex-grow: 0;
@@ -131,5 +130,6 @@ footer {
     #cv_section {
         margin: 0;
         flex-grow: 0;
+        border-left: none;
     }
 }
