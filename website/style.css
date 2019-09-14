@@ -65,6 +65,7 @@ header .subtitle {
 #contact_section {
     display: flex;
     justify-content: center;
+    margin: 0 0 10px 0;
 }
 
 #contact_section h3 {
@@ -114,5 +115,17 @@ footer {
 
     #contact_section {
         flex-flow: column;
+    }
+
+    #contactcard {
+        border-right: none;
+        padding: 0;
+        margin: 0;
+        flex-grow: 0;
+    }
+
+    #cv_section {
+        margin: 0;
+        flex-grow: 0;
     }
 }
