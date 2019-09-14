@@ -15,6 +15,15 @@ h1 {
     font-family: 'Lato', sans-serif;
 }
 
+a {
+    color: #004caa;
+}
+
+a:hover {
+    color: #100070;
+    text-decoration: none;
+}
+
 header .name {
     font-size: 60px;
     text-align: center;
@@ -53,6 +62,29 @@ header .subtitle {
 }
 
 /* Contents */
+#contact_section {
+    display: flex;
+    justify-content: center;
+}
+
+#contact_section h3 {
+    text-align: center;
+    color: #9c110e;
+}
+
+#contactcard {
+    padding: 0 30px 0 0;
+    margin: 0 0 20px 0;
+    border-right: solid #9c110e;
+    flex-grow: 1;
+    text-align: center;
+}
+
+#cv_section {
+    margin: 0 0 0 10px;
+    flex-grow: 2;
+    text-align: center;
+}
 
 /* Footer */
 footer {
@@ -67,6 +99,20 @@ footer {
     }
 
     .navbar {
+        flex-flow: column;
+    }
+
+    .navbar a {
+        align-self: center;
+    }
+
+    .navbar a.imageLink {
+        width: 1.5em;
+        height: 1.5em;
+        padding: 10px 30px 10px 30px;
+    }
+
+    #contact_section {
         flex-flow: column;
     }
 }
