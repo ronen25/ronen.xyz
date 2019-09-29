@@ -73,6 +73,35 @@ header .subtitle {
     color: #9c110e;
 }
 
+/* Skills section */
+#skilltable {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
+    align-items: stretch;
+    justify-content: stretch;
+}
+
+.skilltable_skill {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    padding: 0 10px 0 0;
+}
+
+.skilltable_skill h3 {
+    color: #9c110e;
+    text-align: center;
+}
+
+.skilltable_skill_last {
+    border-right: none;
+}
+
+.skilltable_skill_first {
+    border-left: none;
+}
+
 #contactcard {
     padding: 0 30px 0 0;
     margin: 0 0 20px 0;
@@ -131,5 +160,29 @@ footer {
         margin: 0;
         flex-grow: 0;
         border-left: none;
+    }
+
+    /* Skills section */
+    #skilltable {
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .skilltable_skill {
+        border-bottom: 1px solid black;
+        padding: 0 10px 0 0;
+        border-left: none;
+        border-right: none;
+    }
+
+    #skilltable_languages #skilltable_software {
+        border-bottom: none;
+    }
+}
+
+/* Very wide screens */
+@media(min-width: 1080) {
+    #aboutme {
+        text-align: center;
     }
 }
