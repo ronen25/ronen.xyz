@@ -12,16 +12,31 @@
     <meta name="keywords" content="ronen.xyz, ronen, lapushner">
     
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+    <link rel="stylesheet" type="text/css" href="css/style_new.css">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
+    <!-- FontAwesome -->
+    <link href="css/fontawesome.min.css" rel="stylesheet">
+    <link href="css/solid.min.css" rel="stylesheet">
+    <link href="css/brands.min.css" rel="stylesheet">
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- TODO: Determine which one of these do we actually need, fetch them locally. -->
+    <!-- TODO: Somehow allow compiling them from source on the backend? Is that possible? -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Lato|Roboto&display=swap" rel="stylesheet"> 
+    <!-- <link href="https://fonts.googleapis.com/css?family=Lato|Roboto&display=swap" rel="stylesheet">  -->
 </head>
+
 <body>
     <header>
-        <div class="name">
-            RONEN LAPUSHNER
-        </div>
+        
 
         <!-- Github corner -->
         <a href="https://github.com/ronen25/ronen.xyz" 
@@ -36,42 +51,86 @@
         </style>
         <!-------------------------------------------------------------------->
 
-        <div class="subtitle">
+
+        <!--
+        <div class="name">
+                RONEN LAPUSHNER
+        </div>
+
+        
+        <div class="text-center">
             <p>Full stack developer based in Israel</p>
+        </div>
+        -->
+
+        <!-- JUMBOTRON FOR DISPLAYING MY NAME -->
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-1 text-center">RONEN LAPUSHNER</h1>
+                <p class="lead text-center">Full-stack software developer based in Israel</p>
+            </div>
         </div>
         
         <!-- WEBPAGE NAVIGATION BAR -->
         <nav>
-            <div class="navbar">
-                <!-- About Me -->
-                <a href="#" alt="">About Me</a>
+            <div class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation">
+                <ul class="navbar-nav mx-auto">
+                    <!-- About Me -->
+                    <li class="nav-item active">
+                        <a href="#" alt="" class="nav-link text-light">About Me</a>
+                    </li>
 
-                <!-- About Me -->
-                <a href="#" alt="">Skills</a>
+                    <!-- Skills -->
+                    <li class="nav-item active">
+                        <a href="#" alt=""  class="nav-link text-light">Skills</a>
+                    </li>
                 
-                <!-- Projects -->
-                <a href="#projects" alt="">Projects</a>
+                    <!-- Projects -->
+                    <li class="nav-item active">
+                        <a href="#projects" alt=""  class="nav-link text-light">Projects</a>
+                    </li>
                 
-                <!-- Projects -->
-                <a href="#contact" alt="">Contact</a>
-                
-                <!-- Github link -->
-                <a href="https://github.com/ronen25" 
-                    class="imageLink"
-                    id="link_github" 
-                    alt="Github Profile Link" title="Github Profile Link"
-                    target="_blank">
-                    <img src="./assets/github.svg">
-                </a>
+                    <!-- Projects -->
+                    <li class="nav-item active">
+                        <a href="#contact" alt=""  class="nav-link text-light">Contact</a>
+                    </li>
 
-                <!-- Linkedin link -->
-                <a href="https://www.linkedin.com/in/ronen-lapushner-521966143" 
-                    class="imageLink"
-                    id="link_linkedin"
-                    alt="Linkedin Profile Link" title="Linkedin Profile Link"
-                    target="_blank">
-                    <img src="./assets/linkedin.svg">
-                </a>
+                    <!-- Github link -->
+                    <li class="nav-item active">
+                        <a href="https://github.com/ronen25" 
+                            id="link_github"
+                            class="nav-link"
+                            alt="Github Profile Link" title="Github Profile Link"
+                            target="_blank">
+                            <i class="fab fa-lg fa-github-square"></i>
+                        </a>
+                    </li>
+
+                    <!-- Linkedin link -->
+                    <li class="nav-item active">
+                        <a href="https://www.linkedin.com/in/ronen-lapushner-521966143"
+                            id="link_linkedin"
+                            class="nav-link"
+                            alt="Linkedin Profile Link" title="Linkedin Profile Link"
+                            target="_blank">
+                            <i class="fab fa-lg fa-linkedin"></i>
+                        </a>
+                    </li>
+
+                    <!-- More -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle disabled" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" 
+                           aria-haspopup="true" aria-expanded="false">
+                            More
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                </ul>
             </div>
     </nav>
 </header>
@@ -219,7 +278,7 @@
 <!-- FOOTER -->
 <footer>
     <p>
-        This website was designed from scratch by me using HTML5, CSS3 and vue.js.
+        This website was designed from scratch by me using HTML5, CSS3, Bootstrap and vue.js.
     </p>
 </footer>
 </body>
