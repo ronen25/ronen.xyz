@@ -5,7 +5,11 @@
 
     <div class="container container-fluid">
       <Body />
+
+      <hr />
       <Projects />
+
+      <hr />
       <Contact />
     </div>
     <Footer />
