@@ -59,27 +59,27 @@ func FetchRepoInfo(c *github.Client, ctx *context.Context, repoName string,
 	repoInfo.Description = *repoDetails.Description
 	repoInfo.Stars = *repoDetails.StargazersCount
 	repoInfo.Forks = *repoDetails.ForksCount
-	repoInfo.URL = *repoDetails.URL
+	repoInfo.URL = *repoDetails.HTMLURL
 	repoInfo.Topics = repoDetails.Topics
 
 	if repoDetails.License != nil {
-		repoInfo.License = *repoDetails.License.Name
+		repoInfo.License = *repoDetails.License.SPDXID
 	} else {
 		repoInfo.License = ""
 	}
 
 	// For the screenshots, we need to locate a "screenshots" folder
 	// in the repo, and get the URLs of all the files there.
-	_, dirContents, _, fetchErr := client.Repositories.GetContents(*ctx, "",
+	_, dirContents, _, fetchErr := client.Repositories.GetContents(*ctx, "ronen25",
 		*repoDetails.Name, "screenshots", nil)
 	if fetchErr != nil {
-		log.Printf("Warning: Repo %s has no screenshots folder.", repoInfo.Name)
+		log.Printf("Warning: Repo %s: %s ", repoInfo.Name, fetchErr.Error())
 	}
 
 	// Go through the array, get the URLs of the content inside
 	for _, screenshotFile := range dirContents {
 		if *screenshotFile.Type == "file" {
-			repoInfo.ScreenshotURLs = append(repoInfo.ScreenshotURLs, *screenshotFile.URL)
+			repoInfo.ScreenshotURLs = append(repoInfo.ScreenshotURLs, *screenshotFile.DownloadURL)
 		}
 	}
 
