@@ -135,7 +135,7 @@ func FetchProjectInfo(c *github.Client, ctx *context.Context, repos []string) (s
 		MarshalTime string     `json:"date"`
 		Data        []RepoInfo `json:"repos"`
 	}{
-		marshalTime.Format("%F %T"),
+		marshalTime.Format(time.UnixDate),
 		repoArray,
 	}
 
