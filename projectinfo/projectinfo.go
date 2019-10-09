@@ -4,13 +4,12 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 	"strconv"
 
 	"github.com/google/go-github/github"
 	"golang.org/x/oauth2"
-
-	"log"
 )
 
 // Constants
@@ -18,15 +17,23 @@ const VERSION string = "1.0.0"
 
 // "Global" variables
 var (
-	ctx          context.Context
-	client       github.Client
-	conf         Config
-	cachedResult string
+	ctx    context.Context
+	client github.Client
+	conf   Config
 )
 
 func HandleProjectsInfo(w http.ResponseWriter, r *http.Request) {
-	// TODO
-	fmt.Fprintf(w, "TODO!!!!")
+	// Set JSON
+	w.Header().Set("Content-Type", "application/json")
+
+	// Retrieve the actual data
+	data, err := FetchProjectInfo(&client, &ctx, conf.RepositoriesToFetch)
+	if err != nil {
+		log.Printf("HandleProjectsInfo: Error: " + err.Error())
+	}
+
+	// Write back the data to finish
+	fmt.Fprintln(w, data)
 }
 
 func HandleVersion(w http.ResponseWriter, r *http.Request) {
@@ -69,13 +76,10 @@ func InitializeGithubClient(c *Config) {
 	*/
 }
 
-func handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "HI!!!!")
-}
-
 func main() {
 	// Load configuration
-	conf, err := LoadConfig()
+	var err error
+	conf, err = LoadConfig()
 	if err != nil {
 		log.Fatalln("projectinfo: Error: " + err.Error())
 	}
