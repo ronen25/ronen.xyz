@@ -66,14 +66,6 @@ func InitializeGithubClient(c *Config) {
 
 	// Initialize client
 	client = *github.NewClient(tc)
-
-	/*
-		_, _, fetchErr := client.Repositories.List(ctx, "", nil)
-		if fetchErr != nil {
-			println("Error: Could not get repos: " + fetchErr.Error())
-			return
-		}
-	*/
 }
 
 func main() {

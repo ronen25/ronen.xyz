@@ -12,12 +12,6 @@ import (
 
 // Structure definitions
 
-type Cache struct {
-	lastChanged time.Time `json:"lastChanged"`
-	data        string    `json:"repos"`
-	accessLock  sync.Mutex
-}
-
 type RepoInfo struct {
 	ID             int64    `json:"id"`
 	Name           string   `json:"name"`
@@ -28,6 +22,12 @@ type RepoInfo struct {
 	Forks          int      `json:"forks"`
 	License        string   `json:"license"`
 	URL            string   `json:"url"`
+}
+
+type Cache struct {
+	lastChanged time.Time
+	data        string
+	accessLock  sync.Mutex
 }
 
 type FetchRepoReturn struct {
@@ -93,8 +93,8 @@ func FetchProjectInfo(c *github.Client, ctx *context.Context, repos []string) (s
 
 	// First check if we need to get all changes again,
 	// or a cached response will do.
-	if time.Since(cache.lastChanged).Minutes() < float64(CACHE_REFRESH_MINUTES) {
-		log.Printf("%f since last update, giving cached response.", time.Since(cache.lastChanged).Minutes())
+	if time.Since(cache.lastChanged).Minutes() < float64(conf.CacheUpdateInterval) {
+		log.Printf("Debug: %f since last update, giving cached response.", time.Since(cache.lastChanged).Minutes())
 		// Return a cached response
 		cache.accessLock.Unlock()
 		return cache.data, nil
@@ -115,11 +115,9 @@ func FetchProjectInfo(c *github.Client, ctx *context.Context, repos []string) (s
 
 		// Fetch repo info with a goroutine
 		go FetchRepoInfo(c, ctx, repoName, resultChannel, &wg)
-
-		log.Printf("OK")
 	}
 
-	// Waiter
+	// Wait for the goroutines to finish their job.
 	go func() {
 		wg.Wait()
 		close(resultChannel)
@@ -132,7 +130,16 @@ func FetchProjectInfo(c *github.Client, ctx *context.Context, repos []string) (s
 	}
 
 	// Marshal the repo array to JSON.
-	jsonData, jsonErr := json.MarshalIndent(repoArray, "", "\t")
+	marshalTime := time.Time.UTC(time.Now())
+	marshalData := struct {
+		MarshalTime string     `json:"date"`
+		Data        []RepoInfo `json:"repos"`
+	}{
+		marshalTime.Format("%F %T"),
+		repoArray,
+	}
+
+	jsonData, jsonErr := json.MarshalIndent(marshalData, "", "\t")
 	if jsonErr != nil {
 		return "", jsonErr
 	}
@@ -142,7 +149,7 @@ func FetchProjectInfo(c *github.Client, ctx *context.Context, repos []string) (s
 	cache.accessLock.Lock()
 
 	cache.data = jsonString
-	cache.lastChanged = time.Time.UTC(time.Now())
+	cache.lastChanged = marshalTime
 
 	cache.accessLock.Unlock()
 
