@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <div class="card-header" v-bind:id="this.headingId">
+    <div class="card-header" v-bind:id="this.headingId" style="position: relative;">
       <div class="row">
         <h4 class="col">
           {{ project.name }}
@@ -22,7 +22,7 @@
         <!-- Expand/collapse button -->
         <button
           type="button"
-          class="btn"
+          class="btn stretched-link"
           data-toggle="collapse"
           v-bind:data-target="this.collapseIdFormatted"
           aria-expanded="false"
@@ -40,8 +40,9 @@
       data-parent="#projectsAccordion"
     >
       <!-- Project Item Body -->
-      <div class="card-body">
+      <div class="card-body" style>
         <div class="container container-fluid">
+          <!-- Screenshot carousel -->
           <div :id="this.carouselId" class="carousel slide" data-ride="carousel">
             <!-- Data (i.e. the screenshots to display) -->
             <div class="carousel-inner">
@@ -76,24 +77,24 @@
             </a>
           </div>
 
-          <hr />
+          <hr v-if="project.screenshots.length > 0"/>
 
-          <!-- Project description -->
-          <p class="text-justify">
-            {{ project.description }}
-          </p>
-
-          <!-- Tags -->
-            <b>Technologies: </b>
-            <div class="container">
-              <div class="row">
-          <div v-for="tag in project.tags">
-            <div class="badge badge-info">
-            {{ tag }}
+          <!-- Topics -->
+          <div class="row">
+            <b>Topics:</b>
+            <div v-for="tag in project.topics">
+              <div class="badge badge-info">{{ tag }}</div>&nbsp;&nbsp;
             </div>
-            &nbsp;&nbsp;
           </div>
-          </div>
+
+          <!-- License/repo link -->
+          <div class="row">
+            <div class="col-sm-4" v-if="project.license !== ''">
+              <b>License:</b>
+              <span>{{ project.license }}</span>
+            </div>
+
+            <div class="col-sm-8"></div>
           </div>
         </div>
       </div>
