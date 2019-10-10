@@ -1,3 +1,21 @@
+/*
+ * projectinfo - ronen.xyz microservice for fetching github project information.
+ * Copyright (C) Ronen Lapushner 2019.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 package main
 
 import (
@@ -12,8 +30,8 @@ import (
 	"golang.org/x/oauth2"
 )
 
-// Constants
-const VERSION string = "1.0.0"
+// Version ProjectInfo service version
+const Version string = "1.0.0"
 
 // "Global" variables
 var (
@@ -22,6 +40,7 @@ var (
 	conf   Config
 )
 
+// HandleProjectsInfo HTTP handler for the "projectinfo/" endpoint
 func HandleProjectsInfo(w http.ResponseWriter, r *http.Request) {
 	// Set JSON
 	w.Header().Set("Content-Type", "application/json")
@@ -36,6 +55,7 @@ func HandleProjectsInfo(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, data)
 }
 
+// HandleVersion HTTP handler for the "version/" endpoint
 func HandleVersion(w http.ResponseWriter, r *http.Request) {
 	// Set JSON
 	w.Header().Set("Content-Type", "application/json")
@@ -55,6 +75,7 @@ func HandleVersion(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, string(jsonData))
 }
 
+// InitializeGithubClient Initializes all github-related variables
 func InitializeGithubClient(c *Config) {
 	// Initialize background context, with the OAuth2 authentication.
 	ctx = context.Background()

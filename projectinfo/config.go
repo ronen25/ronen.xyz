@@ -25,15 +25,19 @@ import (
 	"os"
 )
 
-const CONFIG_FILE_ENV_VAR string = "PROJECTINFO_CONFIG_FILE"
+// ConfigFileEnvVar Path for the configuration file that will be used by the service.
+const ConfigFileEnvVar string = "PROJECTINFO_CONFIG_FILE"
 
+// Config Unmarshalled structure that holds the config values.
 type Config struct {
+	UserName            string   `json:"username"`
 	AccessToken         string   `json:"access_token"`
 	RepositoriesToFetch []string `json:"repos"`
 	ServerPort          int      `json:"server_port"`
 	CacheUpdateInterval int      `json:"cache_update_interval"`
 }
 
+// LoadConfig Load the configuration file, unmarshalling it, and returning the Config structure.
 func LoadConfig() (conf Config, err error) {
 	// The environment variable should be set.
 	location, found := os.LookupEnv(CONFIG_FILE_ENV_VAR)

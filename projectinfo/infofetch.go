@@ -1,3 +1,21 @@
+/*
+ * projectinfo - ronen.xyz microservice for fetching github project information.
+ * Copyright (C) Ronen Lapushner 2019.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 package main
 
 import (
@@ -10,8 +28,7 @@ import (
 	"github.com/google/go-github/github"
 )
 
-// Structure definitions
-
+// RepoInfo Unmarshalled JSON structure to hold repository information.
 type RepoInfo struct {
 	ID             int64    `json:"id"`
 	Name           string   `json:"name"`
@@ -24,12 +41,14 @@ type RepoInfo struct {
 	URL            string   `json:"url"`
 }
 
+// Cache Structure containing a cached response.
 type Cache struct {
 	lastChanged time.Time
 	data        string
 	accessLock  sync.Mutex
 }
 
+// FetchRepoReturn The return type for the FetchRepoInfo function.
 type FetchRepoReturn struct {
 	Info  RepoInfo
 	Error error
@@ -40,6 +59,7 @@ var (
 	cache Cache
 )
 
+// FetchRepoInfo Fetch all information about a certain repository.
 func FetchRepoInfo(c *github.Client, ctx *context.Context, repoName string,
 	resultChannel chan<- FetchRepoReturn, wg *sync.WaitGroup) {
 	var repoInfo RepoInfo
@@ -47,7 +67,7 @@ func FetchRepoInfo(c *github.Client, ctx *context.Context, repoName string,
 	defer wg.Done()
 
 	// Fetch repository information
-	repoDetails, _, err := client.Repositories.Get(*ctx, "ronen25", repoName)
+	repoDetails, _, err := client.Repositories.Get(*ctx, conf.UserName, repoName)
 	if err != nil {
 		log.Printf("Warning: Repo %s could not be found!", repoName)
 		return
@@ -70,7 +90,7 @@ func FetchRepoInfo(c *github.Client, ctx *context.Context, repoName string,
 
 	// For the screenshots, we need to locate a "screenshots" folder
 	// in the repo, and get the URLs of all the files there.
-	_, dirContents, _, fetchErr := client.Repositories.GetContents(*ctx, "ronen25",
+	_, dirContents, _, fetchErr := client.Repositories.GetContents(*ctx, conf.UserName,
 		*repoDetails.Name, "screenshots", nil)
 	if fetchErr != nil {
 		log.Printf("Warning: Repo %s: %s ", repoInfo.Name, fetchErr.Error())
@@ -87,6 +107,7 @@ func FetchRepoInfo(c *github.Client, ctx *context.Context, repoName string,
 	resultChannel <- FetchRepoReturn{repoInfo, nil}
 }
 
+// FetchProjectInfo Fetch information about all the repos requested.
 func FetchProjectInfo(c *github.Client, ctx *context.Context, repos []string) (string, error) {
 	// Acquire a read lock for the cache
 	cache.accessLock.Lock()
