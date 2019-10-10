@@ -1,8 +1,9 @@
 {
-    "access_token": ""
+    "username": "",
+    "access_token": "",
     "repos": [
         "panorama"
     ],
     "server_port": 7000,
-    "cache_update_interval": 120
+    "cache_update_interval": 120,
 }
