@@ -27,6 +27,7 @@ import {
   BNavbar, BNavbarNav, BNavItem, BNavItemDropdown, BDropdownItem, BNavbarToggle,
   BCollapse,
   BContainer, BCol, BRow,
+  BButtonGroup, BButton,
 } from 'bootstrap-vue'
 
 Vue.component( 'b-jumbotron', BJumbotron )
@@ -40,6 +41,8 @@ Vue.component( 'b-navbar-toggle', BNavbarToggle )
 Vue.component( 'b-container', BContainer )
 Vue.component( 'b-row', BRow )
 Vue.component( 'b-col', BCol )
+Vue.component( 'b-button-group', BButtonGroup )
+Vue.component( 'b-button', BButton )
 
 // -------------------------------------------------------------
 Vue.config.productionTip = false
