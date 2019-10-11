@@ -13,7 +13,7 @@
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
       <b-collapse id="nav-collapse" is-nav>
-        <b-navbar-nav v-bind:align="'center'" class="mx-auto">
+        <b-navbar-nav align="center" class="mx-auto">
           <!-- About -->
           <b-nav-item href="#about" class="text-white">
             <b>ABOUT ME</b>
@@ -41,7 +41,12 @@
             title="Github Link"
             alt="GITHUB"
           >
-            <font-awesome-icon :icon="['fab', 'github']" size="lg"></font-awesome-icon>
+            <div>
+              <font-awesome-icon :icon="['fab', 'github']" size="lg"></font-awesome-icon>
+              <span class="d-sm-inline d-md-none d-lg-none d-xl-inline">
+                <b>&nbsp;GITHUB</b>
+              </span>
+            </div>
           </b-nav-item>
 
           <!-- Linkedin Link -->
@@ -51,7 +56,12 @@
             title="LinkedIn Link"
             alt="LINKEDIN"
           >
-            <font-awesome-icon :icon="['fab', 'linkedin']" size="lg"></font-awesome-icon>
+            <div>
+              <font-awesome-icon :icon="['fab', 'linkedin']" size="lg"></font-awesome-icon>
+              <span class="d-sm-inline d-md-none d-lg-none d-xl-inline">
+                <b>&nbsp;LINKEDIN</b>
+              </span>
+            </div>
           </b-nav-item>
 
           <!-- MORE -->
