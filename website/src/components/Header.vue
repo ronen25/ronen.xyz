@@ -1,100 +1,62 @@
 <template>
   <header>
     <!-- JUMBOTRON FOR DISPLAYING MY NAME -->
-    <div class="jumbotron jumbotron-fluid">
-      <div class="container">
-        <h1 class="display-3 text-center">RONEN LAPUSHNER</h1>
-        <p class="lead text-center">Full-stack software developer based in Israel</p>
-      </div>
-    </div>
+    <b-jumbotron
+      header="Ronen Lapushner"
+      lead="Full-stack software developer based in Israel"
+      v-bind:fluid="true"
+      class="text-center"
+    ></b-jumbotron>
 
     <!-- WEBPAGE NAVIGATION BAR -->
-    <nav>
-      <div class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation">
-        <ul class="navbar-nav mx-auto">
-          <!-- About Me -->
-          <li class="nav-item active">
-            <a href="#" alt class="nav-link text-light text-uppercase font-weight-bold">About Me</a>
-          </li>
+    <b-navbar v-bind:type="'dark'" v-bind:variant="'dark'">
+      <b-navbar-nav v-bind:align="'center'" class="mx-auto">
+        <!-- About -->
+        <b-nav-item href="#about" class="text-white">
+          <b>ABOUT ME</b>
+        </b-nav-item>
 
-          <!-- Skills -->
-          <li class="nav-item active">
-            <a href="#" alt class="nav-link text-light text-uppercase font-weight-bold">Skills</a>
-          </li>
+        <!-- Skills -->
+        <b-nav-item href="#skills">
+          <b>SKILLS</b>
+        </b-nav-item>
 
-          <!-- Projects -->
-          <li class="nav-item active">
-            <a
-              href="#projects"
-              alt
-              class="nav-link text-light text-uppercase font-weight-bold"
-            >Projects</a>
-          </li>
+        <!-- Projects -->
+        <b-nav-item href="#projects">
+          <b>PROJECTS</b>
+        </b-nav-item>
 
-          <!-- Projects -->
-          <li class="nav-item active">
-            <a
-              href="#contact"
-              alt
-              class="nav-link text-light text-uppercase font-weight-bold"
-            >Contact</a>
-          </li>
+        <!-- Contact -->
+        <b-nav-item href="#contact">
+          <b>CONTACT</b>
+        </b-nav-item>
 
-          <!-- Github link -->
-          <li class="nav-item active">
-            <a
-              href="https://github.com/ronen25"
-              id="link_github"
-              class="nav-link"
-              alt="Github Profile Link"
-              title="Github Profile Link"
-              target="_blank"
-            >
-              <!-- <i class="fab fa-lg fa-github-square"></i> -->
-              <font-awesome-icon :icon="['fab', 'github']" size="lg"></font-awesome-icon>
-            </a>
-          </li>
+        <!-- Github Link -->
+        <b-nav-item href="https://github.com/ronen25" target="_blank" 
+        title="Github Link"
+        alt="GITHUB">
+          <font-awesome-icon :icon="['fab', 'github']" size="lg"></font-awesome-icon>
+        </b-nav-item>
 
-          <!-- Linkedin link -->
-          <li class="nav-item active">
-            <a
-              href="https://www.linkedin.com/in/ronen-lapushner-521966143"
-              id="link_linkedin"
-              class="nav-link"
-              alt="Linkedin Profile Link"
-              title="Linkedin Profile Link"
-              target="_blank"
-            >
-            <font-awesome-icon :icon="['fab', 'linkedin']" size="lg"></font-awesome-icon>
-            </a>
-          </li>
+        <!-- Linkedin Link -->
+        <b-nav-item href="https://www.linkedin.com/in/ronen-lapushner-521966143" target="_blank" 
+        title="LinkedIn Link"
+        alt="LINKEDIN">
+          <font-awesome-icon :icon="['fab', 'linkedin']" size="lg"></font-awesome-icon>
+        </b-nav-item>
 
-          <!-- More -->
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle disabled text-uppercase font-weight-bold"
-              href="#"
-              id="navbarDropdown"
-              role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >More</a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </nav>
+        <!-- MORE -->
+        <b-nav-item-dropdown text="MORE" left>
+          <b-dropdown-item href="#">About this site...</b-dropdown-item>
+        </b-nav-item-dropdown>
+
+      </b-navbar-nav>
+    </b-navbar>
   </header>
 </template>
 
 <script>
 export default {
   name: "Header"
-}
+};
 </script>

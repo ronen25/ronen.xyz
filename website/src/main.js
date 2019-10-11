@@ -18,13 +18,21 @@ library.add( faStar, faCodeBranch, faAngleDown, faFileAlt, faFileContract,
 Vue.component( 'font-awesome-icon', FontAwesomeIcon )
 
 // Boostrap-vue
-import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-vue/dist/bootstrap-vue.min.css'
 
 // Import specific bootstrap components
-import { LayoutPlugin } from 'bootstrap-vue'
-Vue.use(LayoutPlugin)
+import {
+  BJumbotron,
+  BNavbar, BNavbarNav, BNavItem, BNavItemDropdown, BDropdownItem
+} from 'bootstrap-vue'
+
+Vue.component( 'b-jumbotron', BJumbotron )
+Vue.component( 'b-navbar', BNavbar )
+Vue.component( 'b-navbar-nav', BNavbarNav )
+Vue.component( 'b-nav-item', BNavItem )
+Vue.component( 'b-nav-item-dropdown', BNavItemDropdown )
+Vue.component( 'b-dropdown-item', BDropdownItem )
 
 // -------------------------------------------------------------
 Vue.config.productionTip = false
