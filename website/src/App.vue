@@ -24,11 +24,6 @@ import Projects from './components/Projects'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 
-// Import bootstrap CSS and JS
-// TODO: Fix the .. path
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.min.js';
-
 export default {
   name: 'app',
   components: {

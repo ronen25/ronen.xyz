@@ -17,6 +17,16 @@ library.add( faStar, faCodeBranch, faAngleDown, faFileAlt, faFileContract,
 
 Vue.component( 'font-awesome-icon', FontAwesomeIcon )
 
+// Boostrap-vue
+import BootstrapVue from 'bootstrap-vue'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap-vue/dist/bootstrap-vue.min.css'
+
+// Import specific bootstrap components
+import { LayoutPlugin } from 'bootstrap-vue'
+Vue.use(LayoutPlugin)
+
+// -------------------------------------------------------------
 Vue.config.productionTip = false
 
 new Vue( {
