@@ -26,8 +26,8 @@ import Footer from './components/Footer'
 
 // Import bootstrap CSS and JS
 // TODO: Fix the .. path
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import'../node_modules/bootstrap/dist/js/bootstrap.min.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.min.js';
 
 export default {
   name: 'app',
