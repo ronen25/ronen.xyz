@@ -50,7 +50,8 @@
               title="Github Profile Link"
               target="_blank"
             >
-              <i class="fab fa-lg fa-github-square"></i>
+              <!-- <i class="fab fa-lg fa-github-square"></i> -->
+              <font-awesome-icon :icon="['fab', 'github']" size="lg"></font-awesome-icon>
             </a>
           </li>
 
@@ -64,7 +65,7 @@
               title="Linkedin Profile Link"
               target="_blank"
             >
-              <i class="fab fa-lg fa-linkedin"></i>
+            <font-awesome-icon :icon="['fab', 'linkedin']" size="lg"></font-awesome-icon>
             </a>
           </li>
 

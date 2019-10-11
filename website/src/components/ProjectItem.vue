@@ -9,13 +9,13 @@
 
         <!-- Stars -->
         <div class="col-1">
-          <i class="fas fa-star"></i>
+          <font-awesome-icon :icon="['fas', 'star']"></font-awesome-icon>
           <b>{{ project.stars }}</b>
         </div>
 
         <!-- Forks -->
         <div class="col-1">
-          <i class="fas fa-code-branch"></i>
+          <font-awesome-icon :icon="['fas', 'code-branch']"></font-awesome-icon>
           <b>{{ project.forks }}</b>
         </div>
 
@@ -28,7 +28,7 @@
           aria-expanded="false"
           v-bind:aria-controls="this.headingId"
         >
-          <i class="fas fa-angle-down"></i>
+          <font-awesome-icon :icon="['fas', 'angle-down']"></font-awesome-icon>
         </button>
       </div>
     </div>

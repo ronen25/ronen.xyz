@@ -25,16 +25,16 @@
             <!-- TODO -->
             <div class="btn-group" role="group" aria-label="buttons-cv-formats">
               <a class="btn btn-primary btn-danger disabled" href="#">
-                <i class="fas fa-file-pdf"></i> PDF
+                <font-awesome-icon :icon="['fas', 'file-pdf']"></font-awesome-icon> PDF
               </a>
               <a class="btn btn-primary disabled" href="#">
-                <i class="fas fa-file"></i> DOCX
+                <font-awesome-icon :icon="['fas', 'file-contract']"></font-awesome-icon> DOCX
               </a>
               <a class="btn btn-primary disabled" href="#">
-                <i class="fas fa-file"></i> DOC
+                <font-awesome-icon :icon="['fas', 'file-contract']"></font-awesome-icon> DOC
               </a>
               <a class="btn btn-primary btn-info disabled" href="#">
-                <i class="fas fa-file-alt"></i> ODT
+                <font-awesome-icon :icon="['fas', 'file-alt']"></font-awesome-icon> ODT
               </a>
             </div>
           </div>
@@ -47,7 +47,7 @@
             <br />
             <!-- TODO -->
             <a class="btn btn-primary btn-danger disabled" href="#">
-              <i class="fas fa-file-pdf"></i> May 2019 Grade Sheet (PDF)
+              <font-awesome-icon :icon="['fas', 'file-pdf']"></font-awesome-icon> May 2019 Grade Sheet (PDF)
             </a>
           </div>
         </div>
