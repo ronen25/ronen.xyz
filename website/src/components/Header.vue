@@ -9,48 +9,57 @@
     ></b-jumbotron>
 
     <!-- WEBPAGE NAVIGATION BAR -->
-    <b-navbar v-bind:type="'dark'" v-bind:variant="'dark'">
-      <b-navbar-nav v-bind:align="'center'" class="mx-auto">
-        <!-- About -->
-        <b-nav-item href="#about" class="text-white">
-          <b>ABOUT ME</b>
-        </b-nav-item>
+    <b-navbar type="dark" variant="dark" toggleable="lg">
+      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
-        <!-- Skills -->
-        <b-nav-item href="#skills">
-          <b>SKILLS</b>
-        </b-nav-item>
+      <b-collapse id="nav-collapse" is-nav>
+        <b-navbar-nav v-bind:align="'center'" class="mx-auto">
+          <!-- About -->
+          <b-nav-item href="#about" class="text-white">
+            <b>ABOUT ME</b>
+          </b-nav-item>
 
-        <!-- Projects -->
-        <b-nav-item href="#projects">
-          <b>PROJECTS</b>
-        </b-nav-item>
+          <!-- Skills -->
+          <b-nav-item href="#skills">
+            <b>SKILLS</b>
+          </b-nav-item>
 
-        <!-- Contact -->
-        <b-nav-item href="#contact">
-          <b>CONTACT</b>
-        </b-nav-item>
+          <!-- Projects -->
+          <b-nav-item href="#projects">
+            <b>PROJECTS</b>
+          </b-nav-item>
 
-        <!-- Github Link -->
-        <b-nav-item href="https://github.com/ronen25" target="_blank" 
-        title="Github Link"
-        alt="GITHUB">
-          <font-awesome-icon :icon="['fab', 'github']" size="lg"></font-awesome-icon>
-        </b-nav-item>
+          <!-- Contact -->
+          <b-nav-item href="#contact">
+            <b>CONTACT</b>
+          </b-nav-item>
 
-        <!-- Linkedin Link -->
-        <b-nav-item href="https://www.linkedin.com/in/ronen-lapushner-521966143" target="_blank" 
-        title="LinkedIn Link"
-        alt="LINKEDIN">
-          <font-awesome-icon :icon="['fab', 'linkedin']" size="lg"></font-awesome-icon>
-        </b-nav-item>
+          <!-- Github Link -->
+          <b-nav-item
+            href="https://github.com/ronen25"
+            target="_blank"
+            title="Github Link"
+            alt="GITHUB"
+          >
+            <font-awesome-icon :icon="['fab', 'github']" size="lg"></font-awesome-icon>
+          </b-nav-item>
 
-        <!-- MORE -->
-        <b-nav-item-dropdown text="MORE" left>
-          <b-dropdown-item href="#">About this site...</b-dropdown-item>
-        </b-nav-item-dropdown>
+          <!-- Linkedin Link -->
+          <b-nav-item
+            href="https://www.linkedin.com/in/ronen-lapushner-521966143"
+            target="_blank"
+            title="LinkedIn Link"
+            alt="LINKEDIN"
+          >
+            <font-awesome-icon :icon="['fab', 'linkedin']" size="lg"></font-awesome-icon>
+          </b-nav-item>
 
-      </b-navbar-nav>
+          <!-- MORE -->
+          <b-nav-item-dropdown text="MORE" left>
+            <b-dropdown-item href="#">About this site...</b-dropdown-item>
+          </b-nav-item-dropdown>
+        </b-navbar-nav>
+      </b-collapse>
     </b-navbar>
   </header>
 </template>
