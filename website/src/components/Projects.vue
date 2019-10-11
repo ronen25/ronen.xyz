@@ -4,7 +4,7 @@
     <h1 class="text-center">Projects</h1>
 
     <!-- TODO: Replace this dummy text with actual stuff -->
-    <div id="projectsAccordion" class="accordion">
+    <div id="projectsAccordion" role="tablist">
       <ProjectItem v-bind:key="project.id" v-bind:project="project" v-for="project in projects" />
     </div>
   </section>
@@ -24,7 +24,7 @@ export default {
         {
           id: "45783y475y38745y7",
           name: "Panorama",
-          tagline: "A small Linux system monitor",
+          tagline: "Really really long tagline here. What's the point? just for testing. Never gonna have one like this!",
           description:
             "Every project has a small description. This description, along with the other things, is fetched from the README.md.",
           topics: ["cpp", "rust", "python"],
