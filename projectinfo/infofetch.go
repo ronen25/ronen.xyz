@@ -22,6 +22,7 @@ import (
 	"context"
 	"encoding/json"
 	"log"
+	"sort"
 	"sync"
 	"time"
 
@@ -149,6 +150,11 @@ func FetchProjectInfo(c *github.Client, ctx *context.Context, repos []string) (s
 	for repoInfo := range resultChannel {
 		repoArray = append(repoArray, repoInfo.Info)
 	}
+
+	// Sort the array alphabetically
+	sort.Slice(repoArray, func(i, j int) bool {
+		return repoArray[i].Name < repoArray[j].Name
+	})
 
 	// Marshal the repo array to JSON.
 	marshalTime := time.Time.UTC(time.Now())
