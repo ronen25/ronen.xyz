@@ -1,0 +1,20 @@
+version: "3"
+services:
+  website:
+    build: ./website
+    depends_on:
+      - projectinfo-service
+    ports:
+      # Port here should be mapped to port 80 in the container.
+      - "9010:80"
+  projectinfo-service:
+    build: ./projectinfo
+    ports:
+      # Port here should be mapped to the projectinfo server port
+      - "9011:80"
+    volumes:
+      # Put the configuration folder here...
+      - /etc/conf:/etc/conf
+    environment:
+      # ... and here too, with /projectinfo.conf
+      PROJECTINFO_CONFIG_FILE: '/etc/conf/projectinfo.conf'
