@@ -62,7 +62,7 @@ func HandleVersion(w http.ResponseWriter, r *http.Request) {
 
 	// Write the version number, compiler and arch
 	versionStruct := map[string]string{
-		"Version": VERSION,
+		"Version": Version,
 	}
 
 	// Marshal (pretty) to JSON

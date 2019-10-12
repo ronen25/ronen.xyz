@@ -40,7 +40,7 @@ type Config struct {
 // LoadConfig Load the configuration file, unmarshalling it, and returning the Config structure.
 func LoadConfig() (conf Config, err error) {
 	// The environment variable should be set.
-	location, found := os.LookupEnv(CONFIG_FILE_ENV_VAR)
+	location, found := os.LookupEnv(ConfigFileEnvVar)
 	if !found {
 		err = errors.New("Environment variable PROJECTINFO_CONFIG_FILE not found")
 		return
