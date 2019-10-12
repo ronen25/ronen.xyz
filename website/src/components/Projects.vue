@@ -27,13 +27,13 @@ export default {
           tagline: "Really really long tagline here. What's the point? just for testing. Never gonna have one like this!",
           description:
             "Every project has a small description. This description, along with the other things, is fetched from the README.md.",
-          topics: ["cpp", "rust", "python"],
+          topics: ["cpp", "rust", "python", "something", "clever", "which", "is", "really", "some", "buzzword", "but", "I", "guess", "that's", "how", "it", "works"],
           stars: 1000,
           forks: 400,
           screenshots: [
             {
               num: 0,
-              url: "https://avatars3.githubusercontent.com/u/13414?s=400&v=4"
+              url: "https://github.com/ronen25/panorama/raw/master/screenshots/screenshot.png"
             },
             {
               num: 1,

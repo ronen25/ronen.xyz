@@ -6,14 +6,14 @@ import App from './App.vue'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import {
-  faStar, faCodeBranch, 
+  faStar, faCodeBranch,
   faAngleDown, faAngleUp,
   faFileAlt, faFileContract, faFilePdf
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 library.add( faStar, faCodeBranch, faFileAlt, faFileContract,
-  faAngleDown, faAngleUp, 
+  faAngleDown, faAngleUp,
   faFilePdf,
   faGithub, faLinkedin )
 
@@ -29,8 +29,10 @@ import {
   BNavbar, BNavbarNav, BNavItem, BNavItemDropdown, BDropdownItem, BNavbarToggle,
   BCollapse,
   BContainer, BCol, BRow,
-  BButtonGroup, BButton, BCard, BCardHeader, BCardBody, 
+  BButtonGroup, BButton, BCard, BCardHeader, BCardBody,
   VBToggle,
+  BCarousel,
+  BCarouselSlide,
 } from 'bootstrap-vue'
 
 // UI Components
@@ -50,6 +52,8 @@ Vue.component( 'b-button', BButton )
 Vue.component( 'b-card', BCard )
 Vue.component( 'b-card-header', BCardHeader )
 Vue.component( 'b-card-body', BCardBody )
+Vue.component( 'b-carousel', BCarousel )
+Vue.component( 'b-carousel-slide', BCarouselSlide )
 
 // Directives
 Vue.directive( 'b-toggle', VBToggle )

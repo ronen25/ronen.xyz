@@ -31,9 +31,14 @@
               <font-awesome-icon :icon="['fas', 'angle-up']"></font-awesome-icon>
             </span>
           </b-button>
-          
+
           <!-- Expand/collapse button for mobile -->
-          <b-button v-b-toggle="this.collapseId" variant="link" size="lg" class="stretched-link d-none d-sm-inline d-md-none d-lg-none d-xl-none">
+          <b-button
+            v-b-toggle="this.collapseId"
+            variant="link"
+            size="lg"
+            class="stretched-link d-sm-inline d-md-none d-lg-none d-xl-none"
+          >
             <span class="when-closed">
               <font-awesome-icon :icon="['fas', 'angle-down']"></font-awesome-icon>
             </span>
@@ -48,104 +53,53 @@
     <!-- Card body -->
     <b-collapse v-bind:id="this.collapseId" accordion="projectsAccordion" role="tabpanel">
       <b-card-body>
-        <b>TESTING</b>
+        <!-- Image carousel -->
+        <b-carousel
+          :id="this.carouselId"
+          :interval="5000"
+          v-if="this.project.screenshots != 0"
+          controls
+          indicators
+        >
+          <b-carousel-slide
+            v-bind:key="screenshot.num"
+            v-for="screenshot in project.screenshots"
+            text="Screenshot"
+            :img-src="screenshot.url"
+          ></b-carousel-slide>
+        </b-carousel>
+
+        <!-- Separator between the rest of the content and the screenshots. -->
+        <hr v-if="project.screenshots.length > 0" />
+
+        <b-container>
+          <!-- Topics -->
+          <b-row align-v="center">
+            <b-col cols="7">
+              <b>Topics:&nbsp;</b>
+              <span v-for="tag in project.topics">
+                <span class="badge badge-info">{{ tag }}</span>&nbsp;&nbsp;
+              </span>
+            </b-col>
+
+            <!-- License information -->
+            <b-col cols="3">
+              <b class="d-none d-md-inline" v-if="this.project.license != ''">License:&nbsp;</b>
+              <span>{{ project.license }}</span>
+            </b-col>
+
+            <!-- Github repo link -->
+            <b-col cols="2">
+              <b-button variant="primary" size="sm" :href="project.url">
+                <font-awesome-icon :icon="['fab', 'github']"></font-awesome-icon>
+                <span class="d-none d-lg-inline">&nbsp;Github Link</span>
+              </b-button>
+            </b-col>
+          </b-row>
+        </b-container>
       </b-card-body>
     </b-collapse>
   </b-card>
-  <!--
-  <div class="card">
-    <div class="card-header" v-bind:id="this.headingId" style="position: relative;">
-      <div class="row">
-        <h4 class="col">
-          {{ project.name }}
-          <small class="text-muted">{{ project.tagline }}</small>
-        </h4>
-
-        <div class="col-1">
-          <font-awesome-icon :icon="['fas', 'star']"></font-awesome-icon>
-          <b>{{ project.stars }}</b>
-        </div>
-
-        <div class="col-1">
-          <font-awesome-icon :icon="['fas', 'code-branch']"></font-awesome-icon>
-          <b>{{ project.forks }}</b>
-        </div>
-
-        <button
-          type="button"
-          class="btn stretched-link"
-          data-toggle="collapse"
-          v-bind:data-target="this.collapseIdFormatted"
-          aria-expanded="false"
-          v-bind:aria-controls="this.headingId"
-        >
-          <font-awesome-icon :icon="['fas', 'angle-down']"></font-awesome-icon>
-        </button>
-      </div>
-    </div>
-
-    <div
-      v-bind:id="this.collapseId"
-      class="collapse"
-      v-bind:aria-labelledby="this.headingId"
-      data-parent="#projectsAccordion"
-    >
-      <div class="card-body" style>
-        <div class="container container-fluid">
-          <div :id="this.carouselId" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-              <div
-                class="carousel-item"
-                v-bind:key="screenshot.num"
-                v-for="screenshot in project.screenshots"
-                :class="{ active: screenshot.num == 0 }"
-              >
-                <img :src="screenshot.url" class="d-block col" alt="..." />
-              </div>
-            </div>
-
-            <a
-              class="carousel-control-prev"
-              v-bind:href="this.carouselIdFormatted"
-              role="button"
-              data-slide="prev"
-            >
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a
-              class="carousel-control-next"
-              v-bind:href="this.carouselIdFormatted"
-              role="button"
-              data-slide="next"
-            >
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
-
-          <hr v-if="project.screenshots.length > 0"/>
-
-          <div class="row">
-            <b>Topics:</b>
-            <div v-for="tag in project.topics">
-              <div class="badge badge-info">{{ tag }}</div>&nbsp;&nbsp;
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-sm-4" v-if="project.license !== ''">
-              <b>License:</b>
-              <span>{{ project.license }}</span>
-            </div>
-
-            <div class="col-sm-8"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  -->
 </template>
 
 <script>
