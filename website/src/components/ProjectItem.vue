@@ -53,6 +53,26 @@
     <!-- Card body -->
     <b-collapse v-bind:id="this.collapseId" accordion="projectsAccordion" role="tabpanel">
       <b-card-body>
+        <!-- Container for stars and forks - used on Mobile only,
+        since on mobile that information is not shown in the main header-->
+        <b-container
+          class="d-sm-block d-md-none d-lg-none d-xl-none"
+        >
+          <b-row align-h="center" align-v="center">
+            <b-col cols="auto">
+              <font-awesome-icon :icon="['fas', 'star']" size="lg"></font-awesome-icon>
+              <b>&nbsp;{{ project.stars }}</b>
+            </b-col>
+            <!-- Forks -->
+            <b-col cols="auto">
+              <font-awesome-icon :icon="['fas', 'code-branch']" size="lg"></font-awesome-icon>
+              <b>&nbsp;{{ project.forks }}</b>
+            </b-col>
+          </b-row>
+        </b-container>
+
+        <hr class="d-sm-block d-md-none d-lg-none d-xl-none"/>
+
         <!-- Image carousel -->
         <b-carousel
           :id="this.carouselId"
@@ -64,7 +84,6 @@
           <b-carousel-slide
             v-bind:key="screenshot.num"
             v-for="screenshot in project.screenshots"
-            text="Screenshot"
             :img-src="screenshot.url"
           ></b-carousel-slide>
         </b-carousel>
