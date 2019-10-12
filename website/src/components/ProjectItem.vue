@@ -6,7 +6,7 @@
         <!-- Project name -->
         <b-col>
           <h4>{{ project.name }}</h4>
-          <span class="text-wrap text-muted">{{ project.tagline }}</span>
+          <span class="text-wrap text-muted">{{ project.description }}</span>
         </b-col>
 
         <b-col cols="4" md="auto" class="position-static">
@@ -55,9 +55,7 @@
       <b-card-body>
         <!-- Container for stars and forks - used on Mobile only,
         since on mobile that information is not shown in the main header-->
-        <b-container
-          class="d-sm-block d-md-none d-lg-none d-xl-none"
-        >
+        <b-container class="d-sm-block d-md-none d-lg-none d-xl-none">
           <b-row align-h="center" align-v="center">
             <b-col cols="auto">
               <font-awesome-icon :icon="['fas', 'star']" size="lg"></font-awesome-icon>
@@ -71,25 +69,26 @@
           </b-row>
         </b-container>
 
-        <hr class="d-sm-block d-md-none d-lg-none d-xl-none"/>
+        <hr class="d-sm-block d-md-none d-lg-none d-xl-none" />
 
         <!-- Image carousel -->
         <b-carousel
           :id="this.carouselId"
           :interval="5000"
-          v-if="this.project.screenshots != 0"
           controls
           indicators
+          v-if="this.project.screenshots != null"
+          img-height="400"
         >
           <b-carousel-slide
-            v-bind:key="screenshot.num"
+            v-bind:key="screenshot"
             v-for="screenshot in project.screenshots"
-            :img-src="screenshot.url"
+            :img-src="screenshot"
           ></b-carousel-slide>
         </b-carousel>
 
         <!-- Separator between the rest of the content and the screenshots. -->
-        <hr v-if="project.screenshots.length > 0" />
+        <hr v-if="project.screenshots != null" />
 
         <b-container>
           <!-- Topics -->
@@ -140,5 +139,24 @@ export default {
 .collapsed > .when-opened,
 :not(.collapsed) > .when-closed {
   display: none;
+}
+
+.carousel,
+.item,
+.active {
+  height: 100%;
+}
+
+.carousel-inner {
+  height: 100%;
+}
+
+.fill {
+  width: 100%;
+  height: 100% !important;
+}
+div.carousel div.item > img {
+  width: 100%;
+  height: 300px;
 }
 </style>

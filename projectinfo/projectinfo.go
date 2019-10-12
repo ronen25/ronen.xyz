@@ -44,6 +44,8 @@ var (
 func HandleProjectsInfo(w http.ResponseWriter, r *http.Request) {
 	// Set JSON
 	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
 
 	// Retrieve the actual data
 	data, err := FetchProjectInfo(&client, &ctx, conf.RepositoriesToFetch)

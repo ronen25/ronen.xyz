@@ -13,6 +13,8 @@
 <script>
 import ProjectItem from "./ProjectItem";
 
+const axios = require("axios").default;
+
 export default {
   name: "Projects",
   components: {
@@ -20,71 +22,24 @@ export default {
   },
   data() {
     return {
-      projects: [
-        {
-          id: "45783y475y38745y7",
-          name: "Panorama",
-          tagline: "Really really long tagline here. What's the point? just for testing. Never gonna have one like this!",
-          description:
-            "Every project has a small description. This description, along with the other things, is fetched from the README.md.",
-          topics: ["cpp", "rust", "python", "something", "clever", "which", "is", "really", "some", "buzzword", "but", "I", "guess", "that's", "how", "it", "works"],
-          stars: 1000,
-          forks: 400,
-          screenshots: [
-            {
-              num: 0,
-              url: "https://github.com/ronen25/panorama/raw/master/screenshots/screenshot.png"
-            },
-            {
-              num: 1,
-              url: "https://avatars3.githubusercontent.com/u/13414?s=400&v=4"
-            },
-            {
-              num: 2,
-              url: "https://avatars3.githubusercontent.com/u/13414?s=400&v=4"
-            }
-          ],
-          license: "GPL-3.0"
-        },
-        {
-          id: "ejntrjehbfu347hgt84se",
-          name: "libcmdf",
-          tagline: "A small library",
-          description:
-            "Every project has a small description. This description, along with the other things, is fetched from the README.md.",
-          topics: ["c", "cpp"],
-          stars: 222,
-          forks: 44,
-          screenshots: [
-            {
-              num: 0,
-              url: "https://avatars3.githubusercontent.com/u/13414?s=400&v=4"
-            },
-            {
-              num: 1,
-              url: "https://avatars3.githubusercontent.com/u/13414?s=400&v=4"
-            },
-            {
-              num: 2,
-              url: "https://avatars3.githubusercontent.com/u/13414?s=400&v=4"
-            }
-          ],
-          license: "GPL-3.0"
-        },
-        {
-          id: "fgndjn3487rhwenu",
-          name: "Panorama",
-          tagline: "A small Linux system monitor",
-          description:
-            "Every project has a small description. This description, along with the other things, is fetched from the README.md.",
-          topics: ["cpp", "rust", "python"],
-          stars: 1000,
-          forks: 400,
-          screenshots: [],
-          license: ""
-        }
-      ]
+      projects: []
     };
+  },
+  mounted() {
+    console.log("URL: " + process.env.VUE_APP_PROJECTINFO_ENDPOINT)
+    // Get the info from the projectinfo service
+    axios
+      .get(process.env.VUE_APP_PROJECTINFO_ENDPOINT)
+      .then(response => {
+        console.log(response.data)
+        this.projects = response.data.repos;
+      })
+      .catch(function(error) {
+        console.log(error)
+      })
+      .finally(function() {
+        console.log("DONE");
+      });
   }
 };
 </script>
