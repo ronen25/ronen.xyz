@@ -26,9 +26,15 @@ COPY . .
 RUN apk add --no-cache git
 
 # Install all dependencies
-RUN go get -d -v "github.com/google/go-github/github" "golang.org/x/oauth2"
+RUN go get -d -v "github.com/google/go-github/github" \
+    "golang.org/x/oauth2" \
+    "github.com/gorilla/handlers" \
+    "github.com/gorilla/mux" \
+    "github.com/rs/cors"
 
 # Install the application itself
 RUN go install -v . 
+
+EXPOSE 80
 
 CMD ["app"]

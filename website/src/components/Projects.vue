@@ -26,10 +26,10 @@ export default {
     };
   },
   mounted() {
-    console.log("URL: " + process.env.VUE_APP_PROJECTINFO_ENDPOINT)
+    console.log("URL: " + process.env.VUE_APP_PROJECTINFO_PROJECTINFO_ENDPOINT)
     // Get the info from the projectinfo service
     axios
-      .get(process.env.VUE_APP_PROJECTINFO_ENDPOINT)
+      .get(process.env.VUE_APP_PROJECTINFO_PROJECTINFO_ENDPOINT)
       .then(response => {
         console.log(response.data)
         this.projects = response.data.repos;

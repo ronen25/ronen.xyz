@@ -32,7 +32,7 @@ import {
   BButtonGroup, BButton, BCard, BCardHeader, BCardBody,
   VBToggle,
   BCarousel,
-  BCarouselSlide,
+  BCarouselSlide
 } from 'bootstrap-vue'
 
 // UI Components
@@ -60,6 +60,11 @@ Vue.directive( 'b-toggle', VBToggle )
 
 // -------------------------------------------------------------
 Vue.config.productionTip = false
+
+// Configure an error handler
+Vue.config.errorHandler = err => {
+  console.error('Error: ', err)
+}
 
 new Vue( {
   render: h => h( App ),

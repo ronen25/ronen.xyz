@@ -3,3 +3,4 @@ projectinfo/.vscode
 .vscode
 projectinfo/projectinfo
 projectinfo/pkg
+.env
