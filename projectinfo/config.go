@@ -33,7 +33,6 @@ type Config struct {
 	UserName            string   `json:"username"`
 	AccessToken         string   `json:"access_token"`
 	RepositoriesToFetch []string `json:"repos"`
-	ServerPort          int      `json:"server_port"`
 	CacheUpdateInterval int      `json:"cache_update_interval"`
 }
 

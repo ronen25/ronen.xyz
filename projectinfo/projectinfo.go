@@ -33,6 +33,9 @@ import (
 // Version ProjectInfo service version
 const Version string = "1.0.0"
 
+// Default hard-coded server port
+const ServerPort int = 80
+
 // "Global" variables
 var (
 	ctx    context.Context
@@ -42,10 +45,9 @@ var (
 
 // HandleProjectsInfo HTTP handler for the "projectinfo/" endpoint
 func HandleProjectsInfo(w http.ResponseWriter, r *http.Request) {
-	// Set JSON
+	// Set JSON and CORS
 	w.Header().Set("Content-Type", "application/json")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
-	w.Header().Set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
 
 	// Retrieve the actual data
 	data, err := FetchProjectInfo(&client, &ctx, conf.RepositoriesToFetch)
@@ -59,8 +61,9 @@ func HandleProjectsInfo(w http.ResponseWriter, r *http.Request) {
 
 // HandleVersion HTTP handler for the "version/" endpoint
 func HandleVersion(w http.ResponseWriter, r *http.Request) {
-	// Set JSON
+	// Set JSON and CORS
 	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 
 	// Write the version number, compiler and arch
 	versionStruct := map[string]string{
@@ -102,14 +105,16 @@ func main() {
 	// Initialize github stuff
 	InitializeGithubClient(&conf)
 
-	// Initialize the HTTP server and register handlers
+	log.Printf("DEBUG: Listening on port %d", ServerPort)
+
+	// Initialize HTTP server
 	server := &http.Server{
-		Addr: ":" + strconv.Itoa(conf.ServerPort),
+		Addr: ":" + strconv.Itoa(ServerPort),
 	}
 
 	http.HandleFunc("/projectinfo", HandleProjectsInfo)
 	http.HandleFunc("/version", HandleVersion)
 
-	fmt.Printf("Listening on port %d\n", conf.ServerPort)
+	fmt.Printf("Debug: Listening on port %d\n", ServerPort)
 	log.Fatal(server.ListenAndServe())
 }

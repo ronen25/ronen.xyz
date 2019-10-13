@@ -13,7 +13,6 @@ An example configuration file is available at the `skel/` directory.
 | `username` | Github username that contains the requested repositories. | `"ronen25"` |
 | `access_token` | Github access token. For the best security, use a token that only has read access to your repositories! | |
 | `repos` | A list of the repositories that will be fetched. | `[ "panorama", "libcmdf" ]` |
-| `server_port` | The TCP port to use for listening for connections. | `7001` |
 | `cache_update_interval` | This service maintaines a cache for the information it retrieves. This setting controls the time, in minutes, that the cache will be valid for. | `120` |
 
 ## Building and Running the Image
