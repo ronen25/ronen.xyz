@@ -39,6 +39,6 @@ export default {
 
 <style>
 body {
-  background: rgba(237, 247, 255, 1)!important;
+  background: #fdfdfd !important;
 }
 </style>

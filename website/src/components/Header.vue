@@ -84,11 +84,11 @@ export default {
 
 <style scoped>
 #jumbotron {
-  background: rgb(237, 247, 255);
+  background: rgb(29, 90, 253);
   background: linear-gradient(
-    0deg,
-    rgba(237, 247, 255, 1) 12%,
-    rgba(86, 119, 120, 1) 100%
+    180deg,
+    rgba(29, 90, 253, 1) 0%,
+    rgba(253, 253, 253, 1) 100%
   );
 }
 </style>
