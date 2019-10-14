@@ -90,5 +90,6 @@ export default {
     rgba(29, 90, 253, 1) 0%,
     rgba(253, 253, 253, 1) 100%
   );
+  font-family: 'Open Sans', sans-serif;
 }
 </style>

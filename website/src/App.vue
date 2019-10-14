@@ -40,5 +40,6 @@ export default {
 <style>
 body {
   background: #fdfdfd !important;
+  font-family: 'Lato', sans-serif !important;
 }
 </style>
