@@ -17,7 +17,7 @@
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav align="center" class="mx-auto">
           <!-- About -->
-          <b-nav-item href="#about" class="text-white">
+          <b-nav-item href="#aboutme" class="text-white">
             <b>ABOUT ME</b>
           </b-nav-item>
 

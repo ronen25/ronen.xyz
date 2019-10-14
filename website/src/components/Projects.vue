@@ -1,6 +1,6 @@
 <template>
   <!-- Projects section-->
-  <section id="projects_section">
+  <section id="projects">
     <h1 class="text-center">Projects</h1>
 
     <!-- TODO: Replace this dummy text with actual stuff -->

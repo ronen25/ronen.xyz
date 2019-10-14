@@ -19,7 +19,7 @@
 
     <!-- Skills section-->
     <hr />
-    <section id="section">
+    <section id="skills">
       <h1 class="text-center">Skills</h1>
 
       <b-container>
