@@ -2,10 +2,12 @@
   <header>
     <!-- JUMBOTRON FOR DISPLAYING MY NAME -->
     <b-jumbotron
+      id="jumbotron"
       header="Ronen Lapushner"
       lead="Full-stack software developer based in Israel"
       v-bind:fluid="true"
       class="text-center"
+      style="background-color: assets/background.jpg"
     ></b-jumbotron>
 
     <!-- WEBPAGE NAVIGATION BAR -->
@@ -79,3 +81,14 @@ export default {
   name: "Header"
 };
 </script>
+
+<style scoped>
+#jumbotron {
+  background: rgb(237, 247, 255);
+  background: linear-gradient(
+    0deg,
+    rgba(237, 247, 255, 1) 12%,
+    rgba(86, 119, 120, 1) 100%
+  );
+}
+</style>
