@@ -23,24 +23,16 @@
     <section id="skills">
       <h1 class="text-center">Skills</h1>
 
-      <SkillCard title="Frontend" color="#3734eb" colorOrder="0">
+      <SkillCard title="Programming Languages" color="#3734eb" colorOrder="0">
         <b-card-text>
-          <p>I have experience both with desktop and web UI frameworks:</p>
           <ul>
-            <li>
-              Qt5, wxWidgets, IMGui
-              <small>
-                <em>(C++)</em>
-              </small>
-            </li>
-            <li>
-              Swing
-              <small>
-                <em>(Java)</em>
-              </small>
-            </li>
-            <li>PyQt, qt-python, Tk</li>
-            <li>Bootstrap, vue.js</li>
+            <li>C99 / C++ (03, 14+)</li>
+            <li>Java (8+)</li>
+            <li>Python 3</li>
+            <li>Golang</li>
+            <li>Rust</li>
+            <li>QML (Qt 5+)</li>
+            <li>ES6</li>
           </ul>
         </b-card-text>
       </SkillCard>
@@ -59,16 +51,24 @@
         </b-card-text>
       </SkillCard>
 
-      <SkillCard title="Programming Languages" color="#3480eb" colorOrder="0">
+      <SkillCard title="Frontend" color="#3480eb" colorOrder="0">
         <b-card-text>
+          <p>I have experience both with desktop and web UI frameworks:</p>
           <ul>
-            <li>C99 / C++ (03, 14+)</li>
-            <li>Java (8+)</li>
-            <li>Python 3</li>
-            <li>Golang</li>
-            <li>Rust</li>
-            <li>QML (Qt 5+)</li>
-            <li>ES6</li>
+            <li>
+              Qt5, wxWidgets, IMGui
+              <small>
+                <em>(C++)</em>
+              </small>
+            </li>
+            <li>
+              Swing
+              <small>
+                <em>(Java)</em>
+              </small>
+            </li>
+            <li>PyQt, qt-python, Tk</li>
+            <li>Bootstrap, vue.js</li>
           </ul>
         </b-card-text>
       </SkillCard>
