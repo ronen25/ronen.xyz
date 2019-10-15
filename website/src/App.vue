@@ -38,6 +38,10 @@ export default {
 </script>
 
 <style>
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: #fdfdfd !important;
   font-family: 'Lato', sans-serif !important;
