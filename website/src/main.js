@@ -36,7 +36,8 @@ import {
   BCardText,
   BCardImgLazy,
   BModal,
-  VBModal
+  VBModal,
+  BNavbarBrand
 } from 'bootstrap-vue'
 
 // UI Components
@@ -45,6 +46,7 @@ Vue.component( 'b-navbar', BNavbar )
 Vue.component( 'b-navbar-nav', BNavbarNav )
 Vue.component( 'b-nav-item', BNavItem )
 Vue.component( 'b-nav-item-dropdown', BNavItemDropdown )
+Vue.component( 'b-navbar-brand', BNavbarBrand )
 Vue.component( 'b-dropdown-item', BDropdownItem )
 Vue.component( 'b-collapse', BCollapse )
 Vue.component( 'b-navbar-toggle', BNavbarToggle )

@@ -18,6 +18,8 @@
 
     <!-- WEBPAGE NAVIGATION BAR -->
     <b-navbar id="navigation_bar" type="dark" variant="dark" toggleable="lg">
+      <b-navbar-brand class="d-sm-inline d-md-none d-lg-none d-xl-none" href="#navigation_bar">ronen.xyz</b-navbar-brand>
+
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
       <b-collapse id="nav-collapse" is-nav>
