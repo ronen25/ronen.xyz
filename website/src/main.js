@@ -37,7 +37,8 @@ import {
   BCardImgLazy,
   BModal,
   VBModal,
-  BNavbarBrand
+  BNavbarBrand,
+  BSpinner
 } from 'bootstrap-vue'
 
 // UI Components
@@ -64,6 +65,7 @@ Vue.component( 'b-card-body', BCardBody )
 Vue.component( 'b-carousel', BCarousel )
 Vue.component( 'b-carousel-slide', BCarouselSlide )
 Vue.component( 'b-modal', BModal )
+Vue.component( 'b-spinner', BSpinner )
 
 // Directives
 Vue.directive( 'b-toggle', VBToggle )
