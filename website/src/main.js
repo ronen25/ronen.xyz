@@ -32,7 +32,9 @@ import {
   BButtonGroup, BButton, BCard, BCardHeader, BCardBody,
   VBToggle,
   BCarousel,
-  BCarouselSlide
+  BCarouselSlide,
+  BCardText,
+  BCardImgLazy
 } from 'bootstrap-vue'
 
 // UI Components
@@ -50,7 +52,10 @@ Vue.component( 'b-col', BCol )
 Vue.component( 'b-button-group', BButtonGroup )
 Vue.component( 'b-button', BButton )
 Vue.component( 'b-card', BCard )
+Vue.component( 'b-card-text', BCardText )
+Vue.component( 'b-card-body', BCardBody )
 Vue.component( 'b-card-header', BCardHeader )
+Vue.component( 'b-card-img', BCardImgLazy )
 Vue.component( 'b-card-body', BCardBody )
 Vue.component( 'b-carousel', BCarousel )
 Vue.component( 'b-carousel-slide', BCarouselSlide )
@@ -63,7 +68,7 @@ Vue.config.productionTip = false
 
 // Configure an error handler
 Vue.config.errorHandler = err => {
-  console.error('Error: ', err)
+  console.error( 'Error: ', err )
 }
 
 new Vue( {
