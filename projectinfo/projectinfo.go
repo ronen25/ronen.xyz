@@ -24,17 +24,13 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"strconv"
 
 	"github.com/google/go-github/github"
 	"golang.org/x/oauth2"
 )
 
 // Version ProjectInfo service version
-const Version string = "1.0.0"
-
-// Default hard-coded server port
-const ServerPort int = 80
+const Version string = "1.0.1"
 
 // "Global" variables
 var (
@@ -105,16 +101,16 @@ func main() {
 	// Initialize github stuff
 	InitializeGithubClient(&conf)
 
-	log.Printf("DEBUG: Listening on port %d", ServerPort)
-
-	// Initialize HTTP server
-	server := &http.Server{
-		Addr: ":" + strconv.Itoa(ServerPort),
-	}
-
 	http.HandleFunc("/projectinfo", HandleProjectsInfo)
 	http.HandleFunc("/version", HandleVersion)
 
-	fmt.Printf("Debug: Listening on port %d\n", ServerPort)
-	log.Fatal(server.ListenAndServe())
+	// Listen on TLS if it's configured
+	if conf.TLS {
+		fmt.Printf("DEBUG: projectinfo Listening (TLS) on :443")
+		log.Fatal(http.ListenAndServe(":80", nil))
+	} else {
+		fmt.Printf("Warning: Started in non-TLS mode.")
+		fmt.Printf("DEBUG: projectinfo Listening on :80")
+		log.Fatal(http.ListenAndServe(":443", nil))
+	}
 }

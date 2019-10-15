@@ -34,6 +34,9 @@ type Config struct {
 	AccessToken         string   `json:"access_token"`
 	RepositoriesToFetch []string `json:"repos"`
 	CacheUpdateInterval int      `json:"cache_update_interval"`
+	TLS                 bool     `json:"tls"`
+	TLSCert             string   `json:"tls_cert"`
+	TLSKey              string   `json:"tls_key"`
 }
 
 // LoadConfig Load the configuration file, unmarshalling it, and returning the Config structure.
@@ -66,7 +69,7 @@ func LoadConfig() (conf Config, err error) {
 		return
 	}
 
-	// Now verify that the configuration file is not empty.
+	// Now verify some of the configuration variables.
 	if len(conf.RepositoriesToFetch) == 0 {
 		err = errors.New("No repos listed in configuration file")
 		return
@@ -75,6 +78,14 @@ func LoadConfig() (conf Config, err error) {
 	if len(conf.AccessToken) == 0 {
 		err = errors.New("Invalid or empty access token")
 		return
+	}
+
+	// Verify some TLS stuff
+	if conf.TLS {
+		if len(conf.TLSCert) == 0 || len(conf.TLSKey) == 0 {
+			err = errors.New("Either the tls_cert or tls_key are empty, but tls = 1")
+			return
+		}
 	}
 
 	return conf, nil

@@ -4,4 +4,7 @@
     "repos": [
     ],
     "cache_update_interval": 120,
+    "tls": 1,
+    "tls_cert": "",
+    "tls_key": ""
 }
