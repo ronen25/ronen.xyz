@@ -5,11 +5,11 @@
       id="jumbotron"
       header="Ronen Lapushner"
       lead="Full-stack software developer based in Israel"
-      v-bind:fluid="true"
+      :fluid="true"
       class="text-center text-light min-vh-100 d-flex flex-column justify-content-center animated"
     >
       <br />
-      <b-button variant="link" class="text-light text-decoration-none" href="#aboutme">
+      <b-button variant="link" class="text-light text-decoration-none" href="#navigation_bar">
         <font-awesome-icon :icon="['fas', 'angle-down']" size="5x"></font-awesome-icon>&nbsp;
         <font-awesome-icon :icon="['fas', 'angle-down']" size="5x"></font-awesome-icon>&nbsp;
         <font-awesome-icon :icon="['fas', 'angle-down']" size="5x"></font-awesome-icon>
@@ -17,7 +17,7 @@
     </b-jumbotron>
 
     <!-- WEBPAGE NAVIGATION BAR -->
-    <b-navbar type="dark" variant="dark" toggleable="lg">
+    <b-navbar id="navigation_bar" type="dark" variant="dark" toggleable="lg">
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
       <b-collapse id="nav-collapse" is-nav>
