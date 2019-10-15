@@ -4,7 +4,8 @@
     <p class="text-center">
         Website version <code>v.{{version}}</code>.
         <br />
-      Copyright (c) Ronen Lapushner, 2019. Code available
+      All contents of this website are copyright &copy; Ronen Lapushner, 2019.
+      <br />Code available
       <a
         href="https://github.com/ronen25/ronen.xyz"
       >here</a>
