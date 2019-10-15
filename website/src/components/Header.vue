@@ -6,9 +6,15 @@
       header="Ronen Lapushner"
       lead="Full-stack software developer based in Israel"
       v-bind:fluid="true"
-      class="text-center"
-      style="background-color: assets/background.jpg"
-    ></b-jumbotron>
+      class="text-center text-light min-vh-100 d-flex flex-column justify-content-center animated"
+    >
+      <br />
+      <b-button variant="link" class="text-light text-decoration-none" href="#aboutme">
+        <font-awesome-icon :icon="['fas', 'angle-down']" size="5x"></font-awesome-icon>&nbsp;
+        <font-awesome-icon :icon="['fas', 'angle-down']" size="5x"></font-awesome-icon>&nbsp;
+        <font-awesome-icon :icon="['fas', 'angle-down']" size="5x"></font-awesome-icon>
+      </b-button>
+    </b-jumbotron>
 
     <!-- WEBPAGE NAVIGATION BAR -->
     <b-navbar type="dark" variant="dark" toggleable="lg">
@@ -83,13 +89,12 @@ export default {
 </script>
 
 <style scoped>
-#jumbotron {
-  background: rgb(29, 90, 253);
-  background: linear-gradient(
-    180deg,
-    rgba(29, 90, 253, 1) 0%,
-    rgba(253, 253, 253, 1) 100%
-  );
-  font-family: 'Open Sans', sans-serif;
+.jumbotron {
+  font-family: "Open Sans", sans-serif;
+  margin-bottom: 0px;
+  background: #042d73;
+  background: -webkit-linear-gradient(top left, #042d73, #2c98d2);
+  background: -moz-linear-gradient(top left, #042d73, #2c98d2);
+  background: linear-gradient(to bottom right, #042d73, #2c98d2);
 }
 </style>
