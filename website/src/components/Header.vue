@@ -73,9 +73,35 @@
           </b-nav-item>
 
           <!-- MORE -->
-          <b-nav-item-dropdown text="MORE" left>
-            <b-dropdown-item href="#">About this site...</b-dropdown-item>
-          </b-nav-item-dropdown>
+          <div>
+            <b-nav-item-dropdown text="MORE" left @click="showModal=true">
+              <b-dropdown-item v-b-modal.modal-center>
+                About this site...
+                <!-- ABOUT MODAL -->
+                <b-modal id="modal-center" centered title="About ronen.xyz" v-model="showModal">
+                  <p>
+                    This website was designed to be fast and simplistic.
+                    No point in doing fancy animations, since I'm not that
+                    much into frontend anyways ;-)
+                  </p>
+
+                  <b>Versions:</b>
+                  <br />
+
+                  <ul>
+                    <li>Vue.js: {{ this.vueVersion }}</li>
+                    <li>Website: {{ this.websiteVersion }}</li>
+                  </ul>
+
+                  <template v-slot:modal-footer>
+                    <div class="w-100">
+                      <b-button variant="primary" class="float-right" @click="showModal=false">Close</b-button>
+                    </div>
+                  </template>
+                </b-modal>
+              </b-dropdown-item>
+            </b-nav-item-dropdown>
+          </div>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -83,8 +109,17 @@
 </template>
 
 <script>
+import Vue from "vue";
+
 export default {
-  name: "Header"
+  name: "Header",
+  data() {
+    return {
+      showModal: false,
+      vueVersion: Vue.version,
+      websiteVersion: process.env.VUE_APP_VERSION
+    };
+  }
 };
 </script>
 

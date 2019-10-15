@@ -3,6 +3,7 @@
     <!-- About Me section-->
     <section id="aboutme">
       <br />
+      <h1 class="text-center">About Me</h1>
       <p class="lead text-center">Hi, I'm Ronen, and welcome to my website.</p>
 
       <div class="text-md-center">

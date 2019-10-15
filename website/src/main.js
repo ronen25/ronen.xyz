@@ -34,7 +34,9 @@ import {
   BCarousel,
   BCarouselSlide,
   BCardText,
-  BCardImgLazy
+  BCardImgLazy,
+  BModal,
+  VBModal
 } from 'bootstrap-vue'
 
 // UI Components
@@ -59,9 +61,11 @@ Vue.component( 'b-card-img', BCardImgLazy )
 Vue.component( 'b-card-body', BCardBody )
 Vue.component( 'b-carousel', BCarousel )
 Vue.component( 'b-carousel-slide', BCarouselSlide )
+Vue.component( 'b-modal', BModal )
 
 // Directives
 Vue.directive( 'b-toggle', VBToggle )
+Vue.directive( 'b-modal', VBModal )
 
 // -------------------------------------------------------------
 Vue.config.productionTip = false
