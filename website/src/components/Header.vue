@@ -6,7 +6,8 @@
       header="Ronen Lapushner"
       lead="Full-stack software developer based in Israel"
       :fluid="true"
-      class="text-center text-light min-vh-100 d-flex flex-column justify-content-center animated"
+      class="text-center text-light text-break min-vh-100 d-flex flex-column justify-content-center animated"
+      :header-level="headerLevel"
     >
       <br />
       <b-button variant="link" class="text-light text-decoration-none" href="#navigation_bar">
@@ -18,7 +19,10 @@
 
     <!-- WEBPAGE NAVIGATION BAR -->
     <b-navbar id="navigation_bar" type="dark" variant="dark" toggleable="lg">
-      <b-navbar-brand class="d-sm-inline d-md-none d-lg-none d-xl-none" href="#navigation_bar">ronen.xyz</b-navbar-brand>
+      <b-navbar-brand
+        class="d-sm-inline d-md-none d-lg-none d-xl-none"
+        href="#navigation_bar"
+      >ronen.xyz</b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
@@ -119,8 +123,25 @@ export default {
     return {
       showModal: false,
       vueVersion: Vue.version,
-      websiteVersion: process.env.VUE_APP_VERSION
+      websiteVersion: process.env.VUE_APP_VERSION,
+      headerLevel: "3" // Default header level
     };
+  },
+  methods: {
+    onResize(event) {
+      // Recalculate header level
+      if (document.body.clientWidth < 400) {
+        this.headerLevel = "5";
+      } else {
+        this.headerLevel = "3";
+      }
+    }
+  },
+  mounted() {
+    window.addEventListener("resize", this.onResize);
+  },
+  beforeDestroy() {
+    window.removeEventListener("resize", this.onResize);
   }
 };
 </script>
