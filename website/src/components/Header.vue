@@ -127,21 +127,14 @@ export default {
       headerLevel: "3" // Default header level
     };
   },
-  methods: {
-    onResize(event) {
-      // Recalculate header level
-      if (document.body.clientWidth < 400) {
-        this.headerLevel = "5";
-      } else {
-        this.headerLevel = "3";
-      }
+  created() {
+    // Calculate header level
+    if (document.body.clientWidth < 400) {
+      headerLevel = "5";
     }
-  },
-  mounted() {
-    window.addEventListener("resize", this.onResize);
-  },
-  beforeDestroy() {
-    window.removeEventListener("resize", this.onResize);
+    else {
+      headerLevel = "3";
+    }
   }
 };
 </script>
