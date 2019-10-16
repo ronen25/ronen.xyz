@@ -127,13 +127,13 @@ export default {
       headerLevel: "3" // Default header level
     };
   },
-  created() {
+  mounted() {
     // Calculate header level
     if (document.body.clientWidth < 400) {
-      headerLevel = "5";
+      this.headerLevel = "5";
     }
     else {
-      headerLevel = "3";
+      this.headerLevel = "3";
     }
   }
 };
