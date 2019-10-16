@@ -31,19 +31,17 @@ export default {
     };
   },
   mounted() {
-    console.log("URL: " + process.env.VUE_APP_PROJECTINFO_PROJECTINFO_ENDPOINT);
     // Get the info from the projectinfo service
     axios
       .get(process.env.VUE_APP_PROJECTINFO_PROJECTINFO_ENDPOINT)
       .then(response => {
-        console.log(response.data);
         this.projects = response.data.repos;
       })
       .catch(function(error) {
-        console.log(error);
+        console.error(error);
       })
       .finally(function() {
-        console.log("DONE");
+        console.debug("Done.")
       });
   }
 };
