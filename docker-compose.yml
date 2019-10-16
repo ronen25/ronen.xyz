@@ -18,8 +18,11 @@ services:
   projectinfo-service:
     build: ./projectinfo
     ports:
-      - ${PROJECTINFO_PORT}:80
+      # Untoggle this if using in non-TLS mode
+      #- ${PROJECTINFO_PORT}:80
+      - ${PROJECTINFO_PORT}:433
     volumes:
       - ${PROJECTINFO_CONFIG_VOLUME}
+      - /etc/letsencrypt:/etc/letsencrypt
     environment:
       - PROJECTINFO_CONFIG_FILE=${PROJECTINFO_CONFIG_FILE}
