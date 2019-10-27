@@ -29,8 +29,8 @@ RUN apk add --no-cache git
 RUN go get -d -v "github.com/google/go-github/github" \
     "golang.org/x/oauth2"
 
-# Install the application itself
-RUN go install -v . 
+# Build and install the application itself
+RUN go install -ldflags "-X main.Version=`cat ./version`" -v . 
 
 EXPOSE 80
 

@@ -29,15 +29,15 @@ import (
 	"golang.org/x/oauth2"
 )
 
-// Version ProjectInfo service version
-const Version string = "1.0.1"
-
 // "Global" variables
 var (
 	ctx    context.Context
 	client github.Client
 	conf   Config
 )
+
+// Version ProjectInfo service version
+var Version = "0.0.0"
 
 // HandleProjectsInfo HTTP handler for the "projectinfo/" endpoint
 func HandleProjectsInfo(w http.ResponseWriter, r *http.Request) {
@@ -63,7 +63,7 @@ func HandleVersion(w http.ResponseWriter, r *http.Request) {
 
 	// Write the version number, compiler and arch
 	versionStruct := map[string]string{
-		"Version": Version,
+		"version": Version,
 	}
 
 	// Marshal (pretty) to JSON
@@ -106,11 +106,11 @@ func main() {
 
 	// Listen on TLS if it's configured
 	if conf.TLS {
-		fmt.Printf("DEBUG: projectinfo Listening (TLS) on :443")
+		fmt.Println("DEBUG: projectinfo Listening (TLS) on :443")
 		log.Fatal(http.ListenAndServeTLS(":443", conf.TLSCert, conf.TLSKey, nil))
 	} else {
-		fmt.Printf("Warning: Started in non-TLS mode.")
-		fmt.Printf("DEBUG: projectinfo Listening on :80")
+		fmt.Println("Warning: Started in non-TLS mode.")
+		fmt.Println("DEBUG: projectinfo Listening on :80")
 		log.Fatal(http.ListenAndServe(":80", nil))
 	}
 }
