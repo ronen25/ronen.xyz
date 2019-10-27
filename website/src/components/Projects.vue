@@ -27,7 +27,13 @@ export default {
   },
   data() {
     return {
-      projects: []
+      projects: [],
+
+      // TODO: Reserved for future use, currently not implemented
+      // in projectinfo and as such, not implemented in the site.
+      totalRepos: -1,
+      totalStars: -1,
+      totalForks: -1
     };
   },
   mounted() {
@@ -35,6 +41,7 @@ export default {
     axios
       .get(process.env.VUE_APP_PROJECTINFO_PROJECTINFO_ENDPOINT)
       .then(response => {
+        // Store repo data
         this.projects = response.data.repos;
       })
       .catch(function(error) {

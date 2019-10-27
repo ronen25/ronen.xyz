@@ -97,6 +97,7 @@
                   <ul>
                     <li>Vue.js: {{ this.vueVersion }}</li>
                     <li>Website: {{ this.websiteVersion }}</li>
+                    <li>ProjectInfo: {{ this.projectinfoVersion }}</li>
                   </ul>
 
                   <template v-slot:modal-footer>
@@ -117,6 +118,8 @@
 <script>
 import Vue from "vue";
 
+const axios = require("axios").default;
+
 export default {
   name: "Header",
   data() {
@@ -124,6 +127,7 @@ export default {
       showModal: false,
       vueVersion: Vue.version,
       websiteVersion: process.env.VUE_APP_VERSION,
+      projectinfoVersion: "--",
       headerLevel: "3" // Default header level
     };
   },
@@ -135,6 +139,20 @@ export default {
     else {
       this.headerLevel = "3";
     }
+
+    // Get projectinfo version
+    axios
+      .get(process.env.VUE_APP_PROJECTINFO_VERSION_ENDPOINT)
+      .then(response => {
+        // Store repo data
+        this.projectinfoVersion = response.data.version;
+      })
+      .catch(function(error) {
+        console.error(error);
+      })
+      .finally(function() {
+        console.debug("Done.")
+      });
   }
 };
 </script>
