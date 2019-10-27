@@ -14,8 +14,24 @@ An example configuration file is available at the `skel/` directory.
 | `access_token` | Github access token. For the best security, use a token that only has read access to your repositories! | |
 | `repos` | A list of the repositories that will be fetched. | `[ "panorama", "libcmdf" ]` |
 | `cache_update_interval` | This service maintaines a cache for the information it retrieves. This setting controls the time, in minutes, that the cache will be valid for. | `120` |
+| `tls` | `true` to run on port 443 using TLS; otherwise `false` | `true` |
+| `tls_cert` | TLS Certificate file. Required only if running in TLS mode. | `/path/cert.crt` |
+| `tls_key` | TLS key file. Required only if running in TLS mode. | `/path/key.key` |
 
 ## Building and Running the Image
+### Via makefile
+The provided makefile takes care of most of the build tasks.
+To build the image do:
+```
+$ make build
+```
+
+To run the image, make sure to edit the commandline first (depending on what's needed) and then run:
+```
+$ make dockerimage
+```
+
+### Manually
 To build the Docker image simply use:
 ```
 $ docker build -t projectinfo-alpine
