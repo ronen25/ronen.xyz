@@ -25,10 +25,6 @@ COPY . .
 # Install git
 RUN apk add --no-cache git
 
-# Install all dependencies
-RUN go get -d -v "github.com/google/go-github/github" \
-    "golang.org/x/oauth2"
-
 # Build and install the application itself
 RUN go install -ldflags "-X main.Version=`cat ./version`" -v . 
 
