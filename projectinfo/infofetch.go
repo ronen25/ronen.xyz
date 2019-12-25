@@ -42,29 +42,20 @@ type RepoInfo struct {
 	URL            string   `json:"url"`
 }
 
-// FetchRepoReturn The return type for the FetchRepoInfo function.
-type FetchRepoReturn struct {
-	Info  RepoInfo
-	Error error
-}
-
 // "Global" variables
 var (
 	cache Cache
 )
 
 // FetchRepoInfo Fetch all information about a certain repository.
-func FetchRepoInfo(c *github.Client, ctx *context.Context, repoName string,
-	resultChannel chan<- FetchRepoReturn, wg *sync.WaitGroup) {
+func FetchRepoInfo(c *github.Client, ctx *context.Context, repoName string) (RepoInfo, error) {
 	var repoInfo RepoInfo
-
-	defer wg.Done()
 
 	// Fetch repository information
 	repoDetails, _, err := client.Repositories.Get(*ctx, conf.UserName, repoName)
 	if err != nil {
 		log.Printf("Warning: Repo %s could not be found!", repoName)
-		return
+		return RepoInfo{}, err
 	}
 
 	// Copy all the trivial information
@@ -98,7 +89,7 @@ func FetchRepoInfo(c *github.Client, ctx *context.Context, repoName string,
 	}
 
 	// We're done, return the information.
-	resultChannel <- FetchRepoReturn{repoInfo, nil}
+	return repoInfo, nil
 }
 
 // FetchProjectInfo Fetch information about all the repos requested.
@@ -109,7 +100,7 @@ func FetchProjectInfo(c *github.Client, ctx *context.Context, repos []string) (s
 	// First check if we need to get all changes again,
 	// or a cached response will do.
 	if time.Since(cache.LastChanged).Minutes() < float64(conf.CacheUpdateInterval) {
-		log.Printf("Debug: %f since last update, giving cached response.", time.Since(cache.LastChanged).Minutes())
+		log.Printf("Debug: %.2f minutes since last update, giving cached response.", time.Since(cache.LastChanged).Minutes())
 		// Return a cached response
 		defer cache.Unlock()
 		return cache.Data, nil
@@ -119,17 +110,30 @@ func FetchProjectInfo(c *github.Client, ctx *context.Context, repos []string) (s
 	cache.Unlock()
 
 	// Debug log
-	log.Printf("Debug: Started cache update process")
+	log.Printf("Started cache update process")
 
 	// Need to retrieve the data, so first retrieve the repositories we need.
 	var repoArray []RepoInfo
 	var wg sync.WaitGroup
-	resultChannel := make(chan FetchRepoReturn)
+	resultChannel := make(chan RepoInfo)
+
 	for _, repoName := range repos {
 		wg.Add(1)
 
 		// Fetch repo info with a goroutine
-		go FetchRepoInfo(c, ctx, repoName, resultChannel, &wg)
+		go func(repoName string) {
+			defer wg.Done()
+
+			// Fetch repository information
+			result, err := FetchRepoInfo(c, ctx, repoName)
+			if err != nil {
+				log.Printf("Error: %s", err.Error())
+				return
+			}
+
+			// Put in result channel
+			resultChannel <- result
+		}(repoName)
 	}
 
 	// Wait for the goroutines to finish their job.
@@ -141,7 +145,7 @@ func FetchProjectInfo(c *github.Client, ctx *context.Context, repos []string) (s
 	// While we're processing each repo, get the finished results (when ready)
 	// and, if there's no error, push them to the repo information array.}()
 	for repoInfo := range resultChannel {
-		repoArray = append(repoArray, repoInfo.Info)
+		repoArray = append(repoArray, repoInfo)
 	}
 
 	// Sort the array alphabetically
@@ -171,7 +175,7 @@ func FetchProjectInfo(c *github.Client, ctx *context.Context, repos []string) (s
 	cache.Data = jsonString
 	cache.LastChanged = marshalTime
 
-	defer cache.Unlock()
+	cache.Unlock()
 
 	log.Printf("Debug: Cache update done.")
 
