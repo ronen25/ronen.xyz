@@ -106,11 +106,11 @@ func main() {
 
 	// Listen on TLS if it's configured
 	if conf.TLS {
-		fmt.Println("DEBUG: projectinfo Listening (TLS) on :443")
+		log.Println("Listening (TLS) on :443")
 		log.Fatal(http.ListenAndServeTLS(":443", conf.TLSCert, conf.TLSKey, nil))
 	} else {
-		fmt.Println("Warning: Started in non-TLS mode.")
-		fmt.Println("DEBUG: projectinfo Listening on :80")
+		log.Println("Warning: Started in non-TLS mode.")
+		log.Println("Listening on :80")
 		log.Fatal(http.ListenAndServe(":80", nil))
 	}
 }
