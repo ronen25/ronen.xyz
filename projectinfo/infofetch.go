@@ -42,13 +42,6 @@ type RepoInfo struct {
 	URL            string   `json:"url"`
 }
 
-// Cache Structure containing a cached response.
-type Cache struct {
-	lastChanged time.Time
-	data        string
-	accessLock  sync.Mutex
-}
-
 // FetchRepoReturn The return type for the FetchRepoInfo function.
 type FetchRepoReturn struct {
 	Info  RepoInfo
@@ -111,19 +104,19 @@ func FetchRepoInfo(c *github.Client, ctx *context.Context, repoName string,
 // FetchProjectInfo Fetch information about all the repos requested.
 func FetchProjectInfo(c *github.Client, ctx *context.Context, repos []string) (string, error) {
 	// Acquire a read lock for the cache
-	cache.accessLock.Lock()
+	cache.Lock()
 
 	// First check if we need to get all changes again,
 	// or a cached response will do.
-	if time.Since(cache.lastChanged).Minutes() < float64(conf.CacheUpdateInterval) {
-		log.Printf("Debug: %f since last update, giving cached response.", time.Since(cache.lastChanged).Minutes())
+	if time.Since(cache.LastChanged).Minutes() < float64(conf.CacheUpdateInterval) {
+		log.Printf("Debug: %f since last update, giving cached response.", time.Since(cache.LastChanged).Minutes())
 		// Return a cached response
-		cache.accessLock.Unlock()
-		return cache.data, nil
+		defer cache.Unlock()
+		return cache.Data, nil
 	}
 
 	// OK to unlock now
-	cache.accessLock.Unlock()
+	cache.Unlock()
 
 	// Debug log
 	log.Printf("Debug: Started cache update process")
@@ -173,12 +166,12 @@ func FetchProjectInfo(c *github.Client, ctx *context.Context, repos []string) (s
 
 	// Store the prettified JSON in the cache, updating the date as well.
 	jsonString := string(jsonData)
-	cache.accessLock.Lock()
+	cache.Lock()
 
-	cache.data = jsonString
-	cache.lastChanged = marshalTime
+	cache.Data = jsonString
+	cache.LastChanged = marshalTime
 
-	cache.accessLock.Unlock()
+	defer cache.Unlock()
 
 	log.Printf("Debug: Cache update done.")
 
