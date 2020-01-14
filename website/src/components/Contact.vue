@@ -76,7 +76,7 @@
 
 <script>
 export default {
-  name: "Footer",
+  name: "Contact",
   data() {
     return {
       cv_pdf_path: process.env.VUE_APP_CV_FILE_PDF,

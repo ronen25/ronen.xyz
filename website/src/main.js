@@ -41,6 +41,8 @@ import {
   BSpinner
 } from 'bootstrap-vue'
 
+import router from './router'
+
 // UI Components
 Vue.component( 'b-jumbotron', BJumbotron )
 Vue.component( 'b-navbar', BNavbar )
@@ -80,5 +82,6 @@ Vue.config.errorHandler = err => {
 }
 
 new Vue( {
-  render: h => h( App ),
+  router,
+  render: h => h( App )
 } ).$mount( '#app' )
