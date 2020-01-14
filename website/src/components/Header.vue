@@ -10,10 +10,25 @@
       :header-level="headerLevel"
     >
       <br />
-      <b-button variant="link" class="text-light text-decoration-none" href="#navigation_bar">
-        <font-awesome-icon :icon="['fas', 'angle-down']" size="5x"></font-awesome-icon>&nbsp;
-        <font-awesome-icon :icon="['fas', 'angle-down']" size="5x"></font-awesome-icon>&nbsp;
-        <font-awesome-icon :icon="['fas', 'angle-down']" size="5x"></font-awesome-icon>
+      <b-button
+        variant="link"
+        class="text-light text-decoration-none"
+        href="#navigation_bar"
+      >
+        <font-awesome-icon
+          :icon="['fas', 'angle-down']"
+          size="5x"
+        ></font-awesome-icon
+        >&nbsp;
+        <font-awesome-icon
+          :icon="['fas', 'angle-down']"
+          size="5x"
+        ></font-awesome-icon
+        >&nbsp;
+        <font-awesome-icon
+          :icon="['fas', 'angle-down']"
+          size="5x"
+        ></font-awesome-icon>
       </b-button>
     </b-jumbotron>
 
@@ -22,7 +37,8 @@
       <b-navbar-brand
         class="d-sm-inline d-md-none d-lg-none d-xl-none"
         href="#navigation_bar"
-      >ronen.xyz</b-navbar-brand>
+        >ronen.xyz</b-navbar-brand
+      >
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
@@ -56,7 +72,10 @@
             alt="GITHUB"
           >
             <div>
-              <font-awesome-icon :icon="['fab', 'github']" size="lg"></font-awesome-icon>
+              <font-awesome-icon
+                :icon="['fab', 'github']"
+                size="lg"
+              ></font-awesome-icon>
               <span class="d-sm-inline d-md-none d-lg-none d-xl-inline">
                 <b>&nbsp;GITHUB</b>
               </span>
@@ -71,7 +90,10 @@
             alt="LINKEDIN"
           >
             <div>
-              <font-awesome-icon :icon="['fab', 'linkedin']" size="lg"></font-awesome-icon>
+              <font-awesome-icon
+                :icon="['fab', 'linkedin']"
+                size="lg"
+              ></font-awesome-icon>
               <span class="d-sm-inline d-md-none d-lg-none d-xl-inline">
                 <b>&nbsp;LINKEDIN</b>
               </span>
@@ -80,15 +102,20 @@
 
           <!-- MORE -->
           <div>
-            <b-nav-item-dropdown text="MORE" left @click="showModal=true">
+            <b-nav-item-dropdown text="MORE" left @click="showModal = true">
               <b-dropdown-item v-b-modal.modal-center>
                 About this site...
                 <!-- ABOUT MODAL -->
-                <b-modal id="modal-center" centered title="About ronen.xyz" v-model="showModal">
+                <b-modal
+                  id="modal-center"
+                  centered
+                  title="About ronen.xyz"
+                  v-model="showModal"
+                >
                   <p>
-                    This website was designed to be fast and simplistic.
-                    No point in doing fancy animations, since I'm not that
-                    much into frontend anyways ;-)
+                    This website was designed to be fast and simplistic. No
+                    point in doing fancy animations, since I'm not that much
+                    into frontend anyways ;-)
                   </p>
 
                   <b>Versions:</b>
@@ -102,7 +129,12 @@
 
                   <template v-slot:modal-footer>
                     <div class="w-100">
-                      <b-button variant="primary" class="float-right" @click="showModal=false">Close</b-button>
+                      <b-button
+                        variant="primary"
+                        class="float-right"
+                        @click="showModal = false"
+                        >Close</b-button
+                      >
                     </div>
                   </template>
                 </b-modal>
@@ -135,8 +167,7 @@ export default {
     // Calculate header level
     if (document.body.clientWidth < 400) {
       this.headerLevel = "5";
-    }
-    else {
+    } else {
       this.headerLevel = "3";
     }
 
@@ -151,7 +182,7 @@ export default {
         console.error(error);
       })
       .finally(function() {
-        console.debug("Done.")
+        console.debug("Done.");
       });
   }
 };
@@ -161,9 +192,17 @@ export default {
 .jumbotron {
   font-family: "Open Sans", sans-serif;
   margin-bottom: 0px;
-  background: #042d73;
-  background: -webkit-linear-gradient(top left, #042d73, #2c98d2);
-  background: -moz-linear-gradient(top left, #042d73, #2c98d2);
-  background: linear-gradient(to bottom right, #042d73, #2c98d2);
+  background-image: url("../assets/jumbotron_background.jpg");
+  background-repeat: no-repeat;
+  background-position: left;
+}
+
+@media only screen and (max-width: 978px) {
+  .jumbotron {
+    background: #042d73;
+    background: -webkit-linear-gradient(top left, #042d73, #2c98d2);
+    background: -moz-linear-gradient(top left, #042d73, #2c98d2);
+    background: linear-gradient(to bottom right, #042d73, #2c98d2);
+  }
 }
 </style>
