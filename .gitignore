@@ -4,3 +4,4 @@ projectinfo/.vscode
 projectinfo/projectinfo
 projectinfo/pkg
 .env
+node_modules/
