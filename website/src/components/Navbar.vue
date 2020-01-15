@@ -1,6 +1,7 @@
 <template>
     <!-- WEBPAGE NAVIGATION BAR -->
-    <b-navbar id="navigation_bar" type="dark" variant="dark" toggleable="lg">
+    <b-navbar id="navigation_bar" type="dark" variant="dark" toggleable="lg"
+    fixed="top" :sticky="true">
       <b-navbar-brand
         class="d-sm-inline d-md-none d-lg-none d-xl-none"
         href="#navigation_bar"
@@ -66,48 +67,6 @@
               </span>
             </div>
           </b-nav-item>
-
-          <!-- MORE -->
-          <div>
-            <b-nav-item-dropdown text="MORE" left @click="showModal = true">
-              <b-dropdown-item v-b-modal.modal-center>
-                About this site...
-                <!-- ABOUT MODAL -->
-                <b-modal
-                  id="modal-center"
-                  centered
-                  title="About ronen.xyz"
-                  v-model="showModal"
-                >
-                  <p>
-                    This website was designed to be fast and simplistic. No
-                    point in doing fancy animations, since I'm not that much
-                    into frontend anyways ;-)
-                  </p>
-
-                  <b>Versions:</b>
-                  <br />
-
-                  <ul>
-                    <li>Vue.js: {{ this.vueVersion }}</li>
-                    <li>Website: {{ this.websiteVersion }}</li>
-                    <li>ProjectInfo: {{ this.projectinfoVersion }}</li>
-                  </ul>
-
-                  <template v-slot:modal-footer>
-                    <div class="w-100">
-                      <b-button
-                        variant="primary"
-                        class="float-right"
-                        @click="showModal = false"
-                        >Close</b-button
-                      >
-                    </div>
-                  </template>
-                </b-modal>
-              </b-dropdown-item>
-            </b-nav-item-dropdown>
-          </div>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>

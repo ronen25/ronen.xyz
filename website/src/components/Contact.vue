@@ -10,8 +10,7 @@
             <b>Ronen Lapushner</b>
             <div>
               ronenk17
-              <code>@</code>gmail
-              <code>.</code>com
+              <code>@</code>gmail <code>.</code>com
             </div>
             <div>Netanya, Israel</div>
           </address>
@@ -31,41 +30,55 @@
                 :href="cv_pdf_path"
                 v-if="cv_pdf_path != null && cv_pdf_path != ''"
               >
-                <font-awesome-icon :icon="['fas', 'file-pdf']"></font-awesome-icon>&nbsp;PDF
+                <font-awesome-icon
+                  :icon="['fas', 'file-pdf']"
+                ></font-awesome-icon
+                >&nbsp;PDF
               </b-button>
               <b-button
                 variant="primary"
                 :href="cv_docx_path"
                 v-if="cv_docx_path != null && cv_docx_path != ''"
               >
-                <font-awesome-icon :icon="['fas', 'file-contract']"></font-awesome-icon>&nbsp;DOCX
+                <font-awesome-icon
+                  :icon="['fas', 'file-contract']"
+                ></font-awesome-icon
+                >&nbsp;DOCX
               </b-button>
               <b-button
                 variant="primary"
                 :href="cv_doc_path"
                 v-if="cv_doc_path != null && cv_doc_path != ''"
               >
-                <font-awesome-icon :icon="['fas', 'file-contract']"></font-awesome-icon>&nbsp;DOC
+                <font-awesome-icon
+                  :icon="['fas', 'file-contract']"
+                ></font-awesome-icon
+                >&nbsp;DOC
               </b-button>
               <b-button
                 variant="info"
                 :href="cv_odt_path"
                 v-if="cv_odt_path != null && cv_odt_path != ''"
               >
-                <font-awesome-icon :icon="['fas', 'file-alt']"></font-awesome-icon>&nbsp;ODT
+                <font-awesome-icon
+                  :icon="['fas', 'file-alt']"
+                ></font-awesome-icon
+                >&nbsp;ODT
               </b-button>
             </b-button-group>
           </div>
 
           <br />
 
+          <!-- Grade sheet -->
           <div v-if="gradesheet_pdf_path != null && gradesheet_pdf_path != ''">
             <b>Grade Sheet</b>
 
             <br />
             <!-- TODO: Add link here -->
             <b-button variant="danger" :href="gradesheet_pdf_path">
-              <font-awesome-icon :icon="['fas', 'file-pdf']"></font-awesome-icon>&nbsp;May 2019 Grade Sheet (PDF)
+              <font-awesome-icon :icon="['fas', 'file-pdf']"></font-awesome-icon
+              >&nbsp;May 2019 Grade Sheet (PDF)
             </b-button>
           </div>
         </b-col>
