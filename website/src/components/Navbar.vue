@@ -13,22 +13,22 @@
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav align="center" class="mx-auto">
           <!-- About -->
-          <b-nav-item href="#aboutme" class="text-white">
-            <b>ABOUT ME</b>
-          </b-nav-item>
+          <b-navbar-brand to="/" type="light">
+            <b>Ronen Lapushner</b>
+          </b-navbar-brand>
 
           <!-- Skills -->
-          <b-nav-item href="#skills">
+          <b-nav-item to="software">
             <b>SKILLS</b>
           </b-nav-item>
 
           <!-- Projects -->
-          <b-nav-item href="#projects">
+          <b-nav-item to="projects">
             <b>PROJECTS</b>
           </b-nav-item>
 
           <!-- Contact -->
-          <b-nav-item href="#contact">
+          <b-nav-item to="contact">
             <b>CONTACT</b>
           </b-nav-item>
 

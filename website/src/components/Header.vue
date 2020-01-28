@@ -6,13 +6,14 @@
       header="Ronen Lapushner"
       lead="Full-stack software developer based in Israel"
       :fluid="true"
-      class="text-center text-light text-break min-vh-100 d-flex flex-column justify-content-center animated"
+      class="text-center text-break min-vh-100 d-flex flex-column justify-content-center animated"
       :header-level="headerLevel"
     >
       <br />
       <b-button
+        id="btnScrollDown"
         variant="link"
-        class="text-light text-decoration-none"
+        class="text-decoration-none"
         href="#navigation_bar"
       >
         <font-awesome-icon
@@ -35,17 +36,12 @@
 </template>
 
 <script>
-import Vue from "vue";
-
 const axios = require("axios").default;
 
 export default {
   name: "Header",
   data() {
     return {
-      showModal: false,
-      vueVersion: Vue.version,
-      websiteVersion: process.env.VUE_APP_VERSION,
       projectinfoVersion: "--",
       headerLevel: "3" // Default header level
     };
@@ -80,6 +76,11 @@ export default {
   background-image: url("../assets/jumbotron_background.jpg");
   background-repeat: no-repeat;
   background-position: left;
+  color: rgba(20, 20, 109, 0.76);
+}
+
+#btnScrollDown {
+  color: rgba(20, 20, 109, 0.76);
 }
 
 @media only screen and (max-width: 978px) {
@@ -88,6 +89,11 @@ export default {
     background: -webkit-linear-gradient(top left, #042d73, #2c98d2);
     background: -moz-linear-gradient(top left, #042d73, #2c98d2);
     background: linear-gradient(to bottom right, #042d73, #2c98d2);
+    color: white;
   }
+
+  #btnScrollDown {
+  color: white;
+}
 }
 </style>
