@@ -23,7 +23,7 @@
             <b>CV</b>
 
             <br />
-            <!-- TODO: Add links to the actual files -->
+            <!-- TODO: Change to static folder here instead of individual links. -->
             <b-button-group aria-label="buttons-cv-formats">
               <b-button
                 variant="danger"
@@ -67,7 +67,6 @@
               </b-button>
             </b-button-group>
           </div>
-
           <br />
 
           <!-- Grade sheet -->
@@ -101,3 +100,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+#contact {
+  padding-top: 10px;
+}
+</style>

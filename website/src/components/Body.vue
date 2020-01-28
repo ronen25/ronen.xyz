@@ -1,28 +1,25 @@
 <template>
-  <div class="website_main_body">
+  <div>
     <!-- About Me section-->
-    <section id="aboutme">
+    <section id="aboutme" class="padded">
       <br />
-      <h1 class="text-center">About Me</h1>
-      <p class="lead text-center">Hi, I'm Ronen, and welcome to my website.</p>
+      <h1>About Me</h1>
+      <p>Hi, I'm Ronen, and welcome to my website.</p>
+      <p>I am a full stack developer, interested mainly in developing backend/system software using C++, Java, Rust or Go.</p>
 
-      <div class="text-md-center">
-        <p>I am a full stack developer, interested mainly in developing backend/system software using C++, Java, Rust or Go.</p>
+      <p>
+        I served in the Israeli Air Force as a C/C++/Java/C# full-stack developer, discharging honorably in 2016.
+        <br />I then worked at Cyren as a C++ Software Engineer (and a Tech Lead, since May 2018) until January 2019.
+      </p>
 
-        <p>
-          I served in the Israeli Air Force as a C/C++/Java/C# full-stack developer, discharging honorably in 2016.
-          <br />I then worked at Cyren as a C++ Software Engineer (and a Tech Lead, since May 2018) until January 2019.
-        </p>
-
-        <p>Currently enrolled in the Open University of Israel, studying for a BSc. in Computer Science (expected graduation Jan. 2023)</p>
-      </div>
+      <p>Currently enrolled in the Open University of Israel, studying for a BSc. in Computer Science (expected graduation Jan. 2023)</p>
     </section>
 
     <!-- Skills section-->
     <hr />
 
-    <section id="skills">
-      <h1 class="text-center">Skills</h1>
+    <section id="skills" class="padded">
+      <h1>Skills</h1>
 
       <SkillCard title="Programming Languages" color="#3734eb" colorOrder="0">
         <b-card-text>
@@ -102,4 +99,16 @@ export default {
 </script>
 
 <style scoped>
+@media (max-width: 978px) {
+  .padded {
+    padding-right: 5px !important;
+    padding-left: 5px !important;
+  }
+}
+
+.padded {
+  padding-right: 25% !important;
+  padding-left: 25% !important;
+}
+
 </style>
