@@ -1,10 +1,8 @@
 <template>
-  <footer>
+  <footer id="footer">
     <hr />
     <p class="text-center">
-        Website version <code>v.{{version}}</code>.
-        <br />
-      All contents of this website are copyright &copy; Ronen Lapushner, 2019.
+      Copyright &copy; Ronen Lapushner, 2019 - 2020.
       <br />Code available
       <a
         href="https://github.com/ronen25/ronen.xyz"
@@ -16,11 +14,15 @@
 
 <script>
 export default {
-  name: "Footer",
-  data() {
-      return {
-          version: process.env.VUE_APP_VERSION
-      }
-  }
+  name: "Footer"
 };
 </script>
+
+<style scoped>
+#footer {
+  min-width: 100%;
+  background-color: lightgray;
+  padding-bottom: 10px;
+  margin-bottom: 0px;
+}
+</style>
