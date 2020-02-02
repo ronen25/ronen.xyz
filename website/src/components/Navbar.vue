@@ -19,17 +19,17 @@
 
           <!-- Skills -->
           <b-nav-item to="software">
-            <b>SKILLS</b>
+            SOFTWARE
           </b-nav-item>
 
           <!-- Projects -->
           <b-nav-item to="projects">
-            <b>PROJECTS</b>
+            PROJECTS
           </b-nav-item>
 
           <!-- Contact -->
           <b-nav-item to="contact">
-            <b>CONTACT</b>
+            CONTACT
           </b-nav-item>
 
           <!-- Github Link -->
@@ -45,7 +45,7 @@
                 size="lg"
               ></font-awesome-icon>
               <span class="d-sm-inline d-md-none d-lg-none d-xl-inline">
-                <b>&nbsp;GITHUB</b>
+                &nbsp;GITHUB
               </span>
             </div>
           </b-nav-item>
@@ -63,7 +63,7 @@
                 size="lg"
               ></font-awesome-icon>
               <span class="d-sm-inline d-md-none d-lg-none d-xl-inline">
-                <b>&nbsp;LINKEDIN</b>
+                &nbsp;LINKEDIN
               </span>
             </div>
           </b-nav-item>
