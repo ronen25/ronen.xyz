@@ -1,114 +1,117 @@
 <template>
-  <div>
-    <!-- About Me section-->
-    <section id="aboutme" class="padded">
-      <br />
+  <section id="aboutme">
+    <br />
+    <div class="padded">
       <h1>About Me</h1>
-      <p>Hi, I'm Ronen, and welcome to my website.</p>
-      <p>I am a full stack developer, interested mainly in developing backend/system software using C++, Java, Rust or Go.</p>
+
+      <p style="padding-top: 40px;">Hi, I'm Ronen, and welcome to my website.</p>
+      <p>I am a full stack developer, interested mainly in developing backend/system software using C++, Java and Go.</p>
 
       <p>
-        I served in the Israeli Air Force as a C/C++/Java/C# full-stack developer, discharging honorably in 2016.
+        Serving in the Israeli Air Force (IAF) as a Full-stack software engineer, I discharged honorably in 2016.
         <br />I then worked at Cyren as a C++ Software Engineer (and a Tech Lead, since May 2018) until January 2019.
       </p>
 
       <p>Currently enrolled in the Open University of Israel, studying for a BSc. in Computer Science (expected graduation Jan. 2023)</p>
-    </section>
 
-    <!-- Skills section-->
-    <hr />
+      <!-- Skills -->
+      <b-container fluid style="padding-top: 40px;">
+        <b-row align-v="top">
+          <!-- Programming languages -->
+          <b-col md>
+            <h4>Languages</h4>
+            <ul>
+              <li>C99 / C++ (03, 14+)</li>
+              <li>Java (8+)</li>
+              <li>Python 3</li>
+              <li>Golang</li>
+            </ul>
+          </b-col>
 
-    <section id="skills" class="padded">
-      <h1>Skills</h1>
+          <!-- Backend -->
+          <b-col md>
+            <h4>Backend</h4>
+            <ul>
+              <li>Cross-platform development with native tools</li>
+              <li>POSIX, Win32</li>
+              <li>Docker, Docker Compose</li>
+            </ul>
+          </b-col>
 
-      <SkillCard title="Programming Languages" color="#3734eb" colorOrder="0">
-        <b-card-text>
-          <ul>
-            <li>C99 / C++ (03, 14+)</li>
-            <li>Java (8+)</li>
-            <li>Python 3</li>
-            <li>Golang</li>
-            <li>Rust</li>
-            <li>QML (Qt 5+)</li>
-            <li>ES6</li>
-          </ul>
-        </b-card-text>
-      </SkillCard>
+          <!-- Frontend -->
+          <b-col md>
+            <h4>Frontend</h4>
+            <ul>
+              <li>
+                Qt5, wxWidgets, IMGui
+                <small>
+                  <em>(C++)</em>
+                </small>
+              </li>
+              <li>
+                Swing
+                <small>
+                  <em>(Java)</em>
+                </small>
+              </li>
+              <li>PyQt, qt-python, Tk</li>
+              <li>Bootstrap, vue.js</li>
+            </ul>
+          </b-col>
 
-      <SkillCard title="Backend" color="#3462eb" colorOrder="0">
-        <b-card-text>
-          <p>
-            Most of my experience comes from maintaining and developing cross-platform
-            apps, most of them backend infrastructure.
-          </p>
-          <ul>
-            <li>Cross-platform development with native tools</li>
-            <li>POSIX, Win32, COM</li>
-            <li>Docker, Docker Compose</li>
-          </ul>
-        </b-card-text>
-      </SkillCard>
-
-      <SkillCard title="Frontend" color="#3480eb" colorOrder="0">
-        <b-card-text>
-          <p>I have experience both with desktop and web UI frameworks:</p>
-          <ul>
-            <li>
-              Qt5, wxWidgets, IMGui
-              <small>
-                <em>(C++)</em>
-              </small>
-            </li>
-            <li>
-              Swing
-              <small>
-                <em>(Java)</em>
-              </small>
-            </li>
-            <li>PyQt, qt-python, Tk</li>
-            <li>Bootstrap, vue.js</li>
-          </ul>
-        </b-card-text>
-      </SkillCard>
-
-      <SkillCard title="Utilities / Software" color="#34a2eb" colorOrder="0">
-        <b-card-text>
-          <ul>
-            <li>GCC / LLVM Toolchains</li>
-            <li>Valgrind</li>
-            <li>Doxygen</li>
-            <li>CMake, Autotools</li>
-            <li>Cargo</li>
-            <li>go* tools</li>
-          </ul>
-        </b-card-text>
-      </SkillCard>
-    </section>
-  </div>
+          <!-- Utilities / Software -->
+          <b-col md>
+            <h4>Software</h4>
+            <ul>
+              <li>GCC / LLVM Toolchains</li>
+              <li>Valgrind</li>
+              <li>Doxygen</li>
+              <li>CMake, Autotools</li>
+              <li>Cargo</li>
+              <li>go* tools</li>
+            </ul>
+          </b-col>
+        </b-row>
+      </b-container>
+    </div>
+  </section>
 </template>
 
 <script>
-import SkillCard from "./SkillCard";
-
 export default {
-  name: "Body",
-  components: {
-    SkillCard
-  }
+  name: "Body"
 };
 </script>
 
 <style scoped>
-@media (max-width: 978px) {
-  .padded {
-    padding-right: 5px !important;
-    padding-left: 5px !important;
-  }
+h1 {
+  text-transform: uppercase;
+}
+
+h4 {
+  text-transform: uppercase;
+}
+
+#aboutme {
+  background-color: #434a52;
 }
 
 .padded {
-  padding-right: 25% !important;
-  padding-left: 25% !important;
+  /*padding-right: 15% !important;
+  padding-left: 15% !important;
+  */
+
+  max-width: 900px;
+  margin: auto;
+  color: rgb(252, 252, 252);
 }
 
+@media only screen and (max-width: 900px) {
+  .padded {
+    padding-right: 5px !important;
+    padding-left: 5px !important;
+    max-width: unset;
+    margin: unset;
+  }
+}
 </style>
