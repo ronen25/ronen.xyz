@@ -104,5 +104,6 @@ export default {
 <style scoped>
 #contact {
   padding-top: 10px;
+  background-color: #94bbf1;
 }
 </style>
