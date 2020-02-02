@@ -45,7 +45,13 @@
                 size="lg"
               ></font-awesome-icon>
               <span class="d-sm-inline d-md-none d-lg-none d-xl-inline">
-                &nbsp;GITHUB
+                &nbsp;GITHUB&nbsp;
+              </span>
+              <span>
+                <font-awesome-icon
+                :icon="['fas', 'external-link-square-alt']"
+                size="xs"
+              ></font-awesome-icon>
               </span>
             </div>
           </b-nav-item>
@@ -63,7 +69,13 @@
                 size="lg"
               ></font-awesome-icon>
               <span class="d-sm-inline d-md-none d-lg-none d-xl-inline">
-                &nbsp;LINKEDIN
+                &nbsp;LINKEDIN&nbsp;
+              </span>
+              <span>
+                <font-awesome-icon
+                :icon="['fas', 'external-link-square-alt']"
+                size="xs"
+              ></font-awesome-icon>
               </span>
             </div>
           </b-nav-item>

@@ -8,14 +8,15 @@ import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import {
   faStar, faCodeBranch,
   faAngleDown, faAngleUp,
-  faFileAlt, faFileContract, faFilePdf
+  faFileAlt, faFileContract, faFilePdf,
+  faExternalLinkSquareAlt
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 library.add( faStar, faCodeBranch, faFileAlt, faFileContract,
   faAngleDown, faAngleUp,
   faFilePdf,
-  faGithub, faLinkedin )
+  faGithub, faLinkedin, faExternalLinkSquareAlt )
 
 Vue.component( 'font-awesome-icon', FontAwesomeIcon )
 
