@@ -1,6 +1,6 @@
 /*
  * projectinfo - ronen.xyz microservice for fetching github project information.
- * Copyright (C) Ronen Lapushner 2019.
+ * Copyright (C) Ronen Lapushner 2019 - 2020.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published
