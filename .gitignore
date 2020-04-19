@@ -1,5 +1,7 @@
 projectinfo/projectinfo.conf
 projectinfo/.vscode
+projectinfo/vendor
+projectinfo/conf_devel/
 .vscode
 projectinfo/projectinfo
 projectinfo/pkg
