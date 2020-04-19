@@ -16,11 +16,12 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package main
+package config
 
 import (
 	"encoding/json"
 	"errors"
+	"fmt"
 	"io/ioutil"
 	"os"
 )
@@ -30,17 +31,22 @@ const ConfigFileEnvVar string = "PROJECTINFO_CONFIG_FILE"
 
 // Config Unmarshalled structure that holds the config values.
 type Config struct {
-	UserName            string   `json:"username"`
-	AccessToken         string   `json:"access_token"`
-	RepositoriesToFetch []string `json:"repos"`
-	CacheUpdateInterval int      `json:"cache_update_interval"`
-	TLS                 bool     `json:"tls"`
-	TLSCert             string   `json:"tls_cert"`
-	TLSKey              string   `json:"tls_key"`
+	UserName            string `json:"username"`
+	AccessToken         string `json:"access_token"`
+	CacheUpdateInterval int    `json:"cache_update_interval"`
+	TLS                 bool   `json:"tls"`
+	TLSCert             string `json:"tls_cert"`
+	TLSKey              string `json:"tls_key"`
 }
 
-// LoadConfig Load the configuration file, unmarshalling it, and returning the Config structure.
-func LoadConfig() (conf Config, err error) {
+// Global configuration
+var (
+	GlobalConfig Config
+)
+
+// LoadConfig Load the configuration file, unmarshalling it, and storing it as the global config
+// instance.
+func LoadConfig() (err error) {
 	// The environment variable should be set.
 	location, found := os.LookupEnv(ConfigFileEnvVar)
 	if !found {
@@ -63,30 +69,26 @@ func LoadConfig() (conf Config, err error) {
 		err = readErr
 		return
 	}
-	unmarshalErr := json.Unmarshal(byteData, &conf)
+	unmarshalErr := json.Unmarshal(byteData, &GlobalConfig)
 	if unmarshalErr != nil {
 		err = unmarshalErr
 		return
 	}
 
-	// Now verify some of the configuration variables.
-	if len(conf.RepositoriesToFetch) == 0 {
-		err = errors.New("No repos listed in configuration file")
-		return
-	}
-
-	if len(conf.AccessToken) == 0 {
+	if len(GlobalConfig.AccessToken) == 0 {
 		err = errors.New("Invalid or empty access token")
 		return
 	}
 
 	// Verify some TLS stuff
-	if conf.TLS {
-		if len(conf.TLSCert) == 0 || len(conf.TLSKey) == 0 {
+	if GlobalConfig.TLS {
+		if len(GlobalConfig.TLSCert) == 0 || len(GlobalConfig.TLSKey) == 0 {
 			err = errors.New("Either the tls_cert or tls_key are empty, but tls = 1")
 			return
 		}
 	}
 
-	return conf, nil
+	fmt.Println(GlobalConfig)
+
+	return nil
 }

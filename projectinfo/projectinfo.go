@@ -19,98 +19,43 @@
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
 	"log"
 	"net/http"
+	"os"
 
-	"github.com/google/go-github/github"
-	"golang.org/x/oauth2"
+	"github.com/gorilla/mux"
+	"github.com/ronen25/ronen.xyz/projectinfo/config"
+	"github.com/ronen25/ronen.xyz/projectinfo/datafetch"
 )
-
-// "Global" variables
-var (
-	ctx    context.Context
-	client github.Client
-	conf   Config
-)
-
-// Version ProjectInfo service version
-var Version = "0.0.0"
-
-// HandleProjectsInfo HTTP handler for the "projectinfo/" endpoint
-func HandleProjectsInfo(w http.ResponseWriter, r *http.Request) {
-	// Set JSON and CORS
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-
-	// Retrieve the actual data
-	data, err := FetchProjectInfo(&client, &ctx, conf.RepositoriesToFetch)
-	if err != nil {
-		log.Printf("HandleProjectsInfo: Error: " + err.Error())
-	}
-
-	// Write back the data to finish
-	fmt.Fprintln(w, data)
-}
-
-// HandleVersion HTTP handler for the "version/" endpoint
-func HandleVersion(w http.ResponseWriter, r *http.Request) {
-	// Set JSON and CORS
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-
-	// Write the version number, compiler and arch
-	versionStruct := map[string]string{
-		"version": Version,
-	}
-
-	// Marshal (pretty) to JSON
-	jsonData, err := json.MarshalIndent(versionStruct, "", "\t")
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-	}
-
-	// Write to response
-	fmt.Fprintln(w, string(jsonData))
-}
-
-// InitializeGithubClient Initializes all github-related variables
-func InitializeGithubClient(c *Config) {
-	// Initialize background context, with the OAuth2 authentication.
-	ctx = context.Background()
-	ts := oauth2.StaticTokenSource(
-		&oauth2.Token{AccessToken: conf.AccessToken},
-	)
-
-	tc := oauth2.NewClient(ctx, ts)
-
-	// Initialize client
-	client = *github.NewClient(tc)
-}
 
 func main() {
 	// Load configuration
-	var err error
-	conf, err = LoadConfig()
+	err := config.LoadConfig()
 	if err != nil {
-		log.Fatalln("projectinfo: Error: " + err.Error())
+		log.Fatalln(os.Args[0] + ": Error: " + err.Error())
 	}
 
 	// Initialize github stuff
-	InitializeGithubClient(&conf)
+	datafetch.InitializeGithubClient(config.GlobalConfig.AccessToken)
 
-	http.HandleFunc("/projectinfo", HandleProjectsInfo)
-	http.HandleFunc("/version", HandleVersion)
+	// Initialzie the Gorilla mux
+	router := mux.NewRouter()
+
+	router.HandleFunc("/top", datafetch.HandleTopProjects).Methods(http.MethodGet, http.MethodOptions)
+	router.HandleFunc("/all", datafetch.HandleAllProjects).Methods(http.MethodGet, http.MethodOptions)
+	router.HandleFunc("/version", datafetch.HandleVersion).Methods(http.MethodGet, http.MethodOptions)
+
+	// Use CORS
+	router.Use(mux.CORSMethodMiddleware(router))
 
 	// Listen on TLS if it's configured
-	if conf.TLS {
+	if config.GlobalConfig.TLS {
 		log.Println("Listening (TLS) on :443")
-		log.Fatal(http.ListenAndServeTLS(":443", conf.TLSCert, conf.TLSKey, nil))
+		log.Fatal(http.ListenAndServeTLS(":443", config.GlobalConfig.TLSCert,
+			config.GlobalConfig.TLSKey, router))
 	} else {
 		log.Println("Warning: Started in non-TLS mode.")
 		log.Println("Listening on :80")
-		log.Fatal(http.ListenAndServe(":80", nil))
+		log.Fatal(http.ListenAndServe(":80", router))
 	}
 }
