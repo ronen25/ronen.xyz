@@ -14,22 +14,17 @@
         <b-navbar-nav align="center" class="mx-auto">
           <!-- About -->
           <b-navbar-brand to="/" type="light">
-            <b>Ronen Lapushner</b>
+            <b>Home</b>
           </b-navbar-brand>
 
-          <!-- Skills -->
-          <b-nav-item to="software">
-            SOFTWARE
-          </b-nav-item>
-
           <!-- Projects -->
-          <b-nav-item to="projects">
-            PROJECTS
+          <b-nav-item to="software">
+            Software
           </b-nav-item>
 
           <!-- Contact -->
           <b-nav-item to="contact">
-            CONTACT
+            Contact
           </b-nav-item>
 
           <!-- Github Link -->
@@ -45,7 +40,7 @@
                 size="lg"
               ></font-awesome-icon>
               <span class="d-sm-inline d-md-none d-lg-none d-xl-inline">
-                &nbsp;GITHUB&nbsp;
+                &nbsp;Github&nbsp;
               </span>
               <span>
                 <font-awesome-icon
@@ -69,7 +64,7 @@
                 size="lg"
               ></font-awesome-icon>
               <span class="d-sm-inline d-md-none d-lg-none d-xl-inline">
-                &nbsp;LINKEDIN&nbsp;
+                &nbsp;LinkedIn&nbsp;
               </span>
               <span>
                 <font-awesome-icon
@@ -89,3 +84,9 @@ export default {
     name: "Navbar",
 }
 </script>
+
+<style scoped>
+b-nav-item {
+  text-transform: capitalize;
+}
+</style>

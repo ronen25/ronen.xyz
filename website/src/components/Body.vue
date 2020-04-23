@@ -9,10 +9,10 @@
 
       <p>
         Serving in the Israeli Air Force (IAF) as a Full-stack software engineer, I discharged honorably in 2016.
-        <br />I then worked at Cyren as a C++ Software Engineer (and a Tech Lead, since May 2018) until January 2019.
+        <br />I then worked at <a target="_blank" href="http://www.cyren.com">Cyren</a> as a C++ Software Engineer (and a Tech Lead, since May 2018) until January 2019.
       </p>
 
-      <p>Currently enrolled in the Open University of Israel, studying for a BSc. in Computer Science (expected graduation Jan. 2023)</p>
+      <p>Currently enrolled in the Open University of Israel, studying for a BSc. in Computer Science (expected graduation Oct. 2022)</p>
 
       <!-- Skills -->
       <b-container fluid style="padding-top: 40px;">
@@ -21,10 +21,11 @@
           <b-col md>
             <h4>Languages</h4>
             <ul>
-              <li>C99 / C++ (03, 14+)</li>
+              <li>C99 / C++ (11+)</li>
               <li>Java (8+)</li>
               <li>Python 3</li>
               <li>Golang</li>
+              <li>Rust</li>
             </ul>
           </b-col>
 
@@ -35,6 +36,7 @@
               <li>Cross-platform development with native tools</li>
               <li>POSIX, Win32</li>
               <li>Docker, Docker Compose</li>
+              <li>Kubernetes (on GKE)</li>
             </ul>
           </b-col>
 
@@ -94,6 +96,7 @@ h4 {
 
 #aboutme {
   background-color: #434a52;
+  padding-bottom: 20px;
 }
 
 .padded {
@@ -104,6 +107,10 @@ h4 {
   max-width: 900px;
   margin: auto;
   color: rgb(252, 252, 252);
+}
+
+a {
+  color: lightblue;
 }
 
 @media only screen and (max-width: 900px) {

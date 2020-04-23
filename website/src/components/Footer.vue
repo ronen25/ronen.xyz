@@ -21,8 +21,15 @@ export default {
 <style scoped>
 #footer {
   min-width: 100%;
-  background-color: lightgray;
-  padding-bottom: 10px;
+  background-color: #35393d;
+  color: rgb(252, 252, 252);
   margin-bottom: 0px;
+  margin-top: 0px;
+  padding-bottom: 10px;
 }
+
+a {
+  color: lightblue;
+}
+
 </style>

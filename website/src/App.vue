@@ -3,8 +3,6 @@
     <!-- Navbar + Router stuff -->
     <Navbar />
     <router-view />
-
-    <Contact />
     <Footer />
   </div>
 </template>
