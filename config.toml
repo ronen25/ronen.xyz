@@ -1,0 +1,29 @@
+baseURL = "http://ronen25.github.io/"
+languageCode = "en-us"
+title = "Ronen Lapushner"
+
+theme = "hugo-theme-console"
+
+[params]
+  # Cutting off the page title to two chars for mobile (console-demo -> co)
+  titleCutting = false
+
+  # Set the animation style -- https://animate.style/
+  # To disable animations, please remove or comment animationStyle parameter
+  animateStyle = "animated zoomIn fast" 
+  
+  [[params.navlinks]]
+  name = "posts/"
+  url = "posts/"
+
+  [[params.navlinks]]
+  name = "projects/"
+  url = "projects/"
+
+  [[params.navlinks]]
+  name = "GITHUB/"
+  url = "https://github.com/ronen25"
+
+  [[params.navlinks]]
+  name = "LINKEDIN/"
+  url = "https://www.linkedin.com/in/ronen-lapushner-521966143"

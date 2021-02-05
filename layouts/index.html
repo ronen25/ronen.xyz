@@ -1,0 +1,61 @@
+{{ define "main" }}
+
+<h1>About Me</h1>
+
+<p>
+    I am a full stack developer, interested mainly in developing system software using C, C++, Rust or Go.
+    <br />
+    
+    I served in the Israeli Air Force as a C/C++/Java/C# full-stack developer, discharging honorably in 2016.
+    <br />
+    <br />
+    Now working at <a target="_blank" href="http://cyren.com">Cyren</a> as a C++ Software Engineer.
+    <br />
+    
+    Currently enrolled in the Open University of Israel, studying for a BSc. in Computer Science. 
+    <br />
+    Expected graduation: October 2022.
+</p>
+
+<h1>Posts</h1>
+
+<div class="posts-list">
+{{ with .Site.GetPage "/posts" }}
+    {{ range first 3 (sort .Data.Pages "Date" "desc" (where .Pages ".Params.private" "!=" true))}}
+        <div class="post">
+            <p>
+                <div class="date">{{ .PublishDate.Format "Jan. 2, 2006" }}</div>
+                <h1><a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a></h1>
+                {{ .Summary }}
+            </p>
+        </div>    
+    {{ end }}
+{{ end }}
+</div>
+
+<hr />
+
+<!-- Contact information card -->
+<div class="terminal-card">
+    <header>Contact Information</header>
+    <div style="text-align: center;">
+        <b>Email: </b>ronenk17@gmail.com
+        <br />
+        <b>Location: </b>Netanya, Israel
+    </div>
+</div>
+
+<br />
+
+<!-- CVs and Gradesheets card -->
+<div class="terminal-card">
+    <header>CVs and Gradesheets</header>
+    <div style="align-content: center;">
+    <div class="btn-group">
+        <button class="btn btn-error btn-block">PDF</button>
+        <button class="btn btn-primary btn-block">DOCX</button>
+    </div>
+    </div>
+</div>
+
+{{ end }}
