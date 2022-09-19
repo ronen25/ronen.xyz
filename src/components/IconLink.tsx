@@ -8,9 +8,9 @@ interface Props {
 
 const IconLink: React.FC<Props> = ({ title, url, IconComponent }: Props) => {
   return (
-    <div className='flex group transition ease-in-out border border-cyan-500 rounded-md hover:bg-slate-600 hover:border-slate-600 hover:drop-shadow-xl w-32'>
+    <div className='flex group transition ease-in-out border border-cyan rounded-md hover:bg-tiffany-blue hover:border-tiffany-blue hover:drop-shadow-xl w-32'>
       <a className='grow flex flex-col p-2 justify-between' href={url}>
-        <div className='text-gray-600 group-hover:text-white text-center'>{title}</div>
+        <div className='text-white group-hover:text-black text-center'>{title}</div>
         <IconComponent
           width={64}
           height={64}

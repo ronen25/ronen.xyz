@@ -9,7 +9,9 @@ module.exports = {
         'tiffany-blue': '#BCECE0',
         cyan: '#36EEE0',
         'hot-pink': '#F652A0',
-        cornflower: '#4C5270',
+        cornflower: {
+          500: '#4C5270',
+        },
       },
     },
   },

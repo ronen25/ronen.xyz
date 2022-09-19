@@ -3,6 +3,7 @@ import Head from 'next/head';
 
 import StatLinks from '../components/StatLinks';
 import fetchGithubData from '../lib/GithubData';
+import Footer from '../components/Footer';
 
 const Home = ({
   githubStars,
@@ -18,8 +19,8 @@ const Home = ({
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <div className='flex flex-col h-[42rem] p-1 bg-cornflower rounded-b-lg'>
-        <div className='text-8xl mt-48 text-white'>Ronen Lapushner</div>
+      <div className='flex flex-col h-[42rem] p-1 bg-cornflower-500 rounded-b-lg'>
+        <div className='text-8xl mt-48 text-white text-center'>Ronen Lapushner</div>
 
         <div className='flex self-center mt-16 mb-16 h-40 w-9/12'>
           <StatLinks
@@ -31,6 +32,8 @@ const Home = ({
       </div>
 
       <main>TODO</main>
+
+      <Footer />
     </>
   );
 };
