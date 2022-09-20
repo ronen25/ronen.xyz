@@ -1,3 +1,4 @@
+import { z } from 'zod';
 import { maxBy } from 'lodash';
 
 type GithubData = {
@@ -6,22 +7,26 @@ type GithubData = {
   mostUsedLanguage: string;
 };
 
-interface RepoInfo {
-  stargazers_count: number;
-  languages_url: string;
-}
+const LanguageInfo = z.record(z.number());
+
+const RepoInfo = z.object({
+  stargazers_count: z.number(),
+  languages_url: z.string(),
+});
+const RepoInfoArray = z.array(RepoInfo);
 
 const requestHeaders = {
   Accept: 'application/vnd.github+json',
   Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
 };
 
-const fetchLanguageData = async (url: string): Promise<Object> => {
+const fetchLanguageData = async (url: string) => {
   // Fetch language data from url
   const dataResponse = await fetch(url, {
     headers: { ...requestHeaders },
   });
-  const languageData = await dataResponse.json();
+  const jsonResponse = await dataResponse.json();
+  const languageData = LanguageInfo.parse(jsonResponse);
 
   return languageData;
 };
@@ -30,7 +35,7 @@ const fetchGithubData = async (): Promise<GithubData> => {
   const response = await fetch('https://api.github.com/user/repos', {
     headers: { ...requestHeaders },
   });
-  const repos = (await response.json()) as RepoInfo[];
+  const repos = RepoInfoArray.parse(await response.json());
 
   const totalStars = repos.reduce((prev, current) => prev + current.stargazers_count, 0);
 
