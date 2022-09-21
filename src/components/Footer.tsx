@@ -6,7 +6,7 @@ import LinkedinIcon from '../assets/linkedin.svg';
 
 const Footer = () => {
   return (
-    <footer className='container flex flex-row bg-cornflower-500 fixed bottom-0 p-2'>
+    <footer className='flex flex-row bg-cornflower-500 fixed bottom-0 px-2 py-4 w-full'>
       <div className='text-white ml-8 text-4xl align-top'>ronen.xyz</div>
       <ul className='text-white ml-4 mt-2'>
         <li>
@@ -14,7 +14,11 @@ const Footer = () => {
             <a className='hover:font-bold transition hover:text-cyan'>Home</a>
           </Link>
         </li>
-        <li>Blog</li>
+        <li>
+          <Link href='/blog'>
+            <a className='hover:font-bold transition hover:text-cyan'>Blog</a>
+          </Link>
+        </li>
         <li>Translations</li>
         <li>
           <a

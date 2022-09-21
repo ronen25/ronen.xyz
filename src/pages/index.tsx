@@ -1,16 +1,14 @@
-import type { InferGetStaticPropsType } from 'next';
+import { ReactElement } from 'react';
 import Head from 'next/head';
-
+import type { InferGetStaticPropsType } from 'next';
+import MainLayout from '../components/MainLayout';
+import { NextPageWithLayout } from './_app';
 import StatLinks from '../components/StatLinks';
 import fetchGithubData from '../lib/GithubData';
-import Footer from '../components/Footer';
 
-const Home = ({
-  githubStars,
-  githubRepos,
-  mostUsedLanguage,
-  posts,
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
+type HomePage = NextPageWithLayout & InferGetStaticPropsType<typeof getStaticProps>;
+
+const Home = ({ githubStars, githubRepos, mostUsedLanguage, posts }: HomePage) => {
   return (
     <>
       <Head>
@@ -32,10 +30,12 @@ const Home = ({
       </div>
 
       <main>TODO</main>
-
-      <Footer />
     </>
   );
+};
+
+Home.getLayout = (page: ReactElement) => {
+  return <MainLayout>{page}</MainLayout>;
 };
 
 export const getStaticProps = async () => {
