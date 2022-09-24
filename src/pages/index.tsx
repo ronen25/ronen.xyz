@@ -29,7 +29,9 @@ const Home = ({ githubStars, githubRepos, mostUsedLanguage, posts }: HomePage) =
         </div>
       </div>
 
-      <main>TODO</main>
+      <main className='container flex flex-row content-center justify-center h-full'>
+        <div className='font-mono'>Under Construction</div>
+      </main>
     </>
   );
 };

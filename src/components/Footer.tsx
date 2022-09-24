@@ -1,4 +1,3 @@
-import React from 'react';
 import Link from 'next/link';
 
 import GithubIcon from '../assets/github.svg';
@@ -19,7 +18,7 @@ const Footer = () => {
             <a className='hover:font-bold transition hover:text-cyan'>Blog</a>
           </Link>
         </li>
-        <li>Translations</li>
+        <li className='text-gray-400'>Translations</li>
         <li>
           <a
             href='https://github.com/ronen25'
