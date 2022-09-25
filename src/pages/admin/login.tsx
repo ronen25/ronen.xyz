@@ -1,4 +1,5 @@
-import { signIn } from 'next-auth/react';
+import { GetServerSideProps } from 'next';
+import { getSession, signIn } from 'next-auth/react';
 
 const Login = () => {
   return (
@@ -14,6 +15,23 @@ const Login = () => {
       </div>
     </div>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const session = getSession();
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/admin',
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
 };
 
 export default Login;
