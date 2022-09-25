@@ -18,9 +18,9 @@ const Login = () => {
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const session = getSession();
+  const session = await getSession();
 
-  if (!session) {
+  if (session) {
     return {
       redirect: {
         destination: '/admin',
