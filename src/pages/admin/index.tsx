@@ -8,6 +8,7 @@ import ToggleButtonGroup from '../../components/ui/ToggleButtonGroup';
 import AddNew from './components/AddNew';
 import EditExisting from './components/EditExisting';
 import RemovePost from './components/RemovePost';
+import Button from '../../components/ui/Button';
 
 interface Props {
   session: Session;
@@ -47,12 +48,9 @@ const AdminPage = ({ session }: PageProps) => {
           <div className='text-center'>ronen.xyz Blog Admin Panel</div>
           <div className='flex flex-row items-center'>
             <div className='text-sm mr-4'>{session?.user?.email}</div>
-            <button
-              className='bg-tiffany-blue-500 hover:bg-tiffany-blue-900 border hover:border-tiffany-blue-900 rounded-md p-1 text-black'
-              onClick={() => signOut()}
-            >
-              Log Out
-            </button>
+            <div className='text-black'>
+              <Button text='Log Out' onClick={() => signOut()} />
+            </div>
           </div>
         </div>
 
