@@ -64,7 +64,7 @@ const AdminPage = ({ session }: PageProps) => {
           />
         </div>
 
-        <div className='h-full w-full'>{currentScreenComponent}</div>
+        <div className='h-full w-full p-1'>{currentScreenComponent}</div>
       </main>
     </>
   );
