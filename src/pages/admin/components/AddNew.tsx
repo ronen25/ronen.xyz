@@ -1,16 +1,22 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Editor from '@monaco-editor/react';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
+import { debounce } from 'lodash';
+import MarkdownView from '../../../components/blog/MarkdownView';
 
 import Button from '../../../components/ui/Button';
 
 const AddNew = () => {
   const [editorValue, setEditorValue] = useState<string>('');
 
-  const onEditorChange = (value: any, event: any) => {
+  useEffect(() => {
+    const storedValue = window.sessionStorage.getItem('addPostEditorValue');
+    setEditorValue(storedValue ?? '');
+  }, []);
+
+  const onEditorChange = debounce((value: any, event: any) => {
+    window.sessionStorage.setItem('addPostEditorValue', value);
     setEditorValue(value);
-  };
+  }, 200);
 
   return (
     <div className='flex flex-col h-full'>
@@ -19,12 +25,12 @@ const AddNew = () => {
           <Editor
             height='100%'
             defaultLanguage='markdown'
-            defaultValue='# My Post'
+            defaultValue={editorValue ?? '# My Post'}
             onChange={onEditorChange}
           />
         </div>
         <div className='w-1/2'>
-          <ReactMarkdown remarkPlugins={[remarkGfm]}>{editorValue}</ReactMarkdown>
+          <MarkdownView children={editorValue} />
         </div>
       </div>
 
