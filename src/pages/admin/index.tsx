@@ -27,7 +27,7 @@ const AdminPage = ({ session }: PageProps) => {
 
   const currentScreenComponent = useMemo(() => {
     if (currentScreen === 'Add New') {
-      return <AddNew />;
+      return <AddNew user={session?.user!} />;
     } else if (currentScreen === 'Edit Existing') {
       return <EditExisting />;
     } else if (currentScreen === 'Remove Post') {
