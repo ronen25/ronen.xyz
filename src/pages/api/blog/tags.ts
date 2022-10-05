@@ -6,19 +6,20 @@ import { authOptions } from '../auth/[...nextauth]';
 import addTags from '../../../lib/blog/tags/addTags';
 import getTags from '../../../lib/blog/tags/getTags';
 
+const TagsArray = z.array(
+  z.object({
+    name: z.string().min(1, { message: 'Tag name must not be empty' }),
+  })
+);
+const TagsData = z.object({
+  tags: TagsArray,
+});
+
 interface ResponseData {
   status: 'ok' | 'error';
   message?: string;
-  data?: any;
+  data?: z.infer<typeof TagsArray>;
 }
-
-const TagsData = z.object({
-  tags: z.array(
-    z.object({
-      name: z.string().min(1, { message: 'Tag name must not be empty' }),
-    })
-  ),
-});
 
 export default async function handler(
   req: NextApiRequest,
