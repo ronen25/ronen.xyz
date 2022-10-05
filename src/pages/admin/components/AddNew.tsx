@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import Editor from '@monaco-editor/react';
 import { get, debounce } from 'lodash';
 import MarkdownView from '../../../components/blog/MarkdownView';
@@ -79,6 +79,10 @@ const AddNew = ({ user }: Props) => {
     }
   }, 200);
 
+  const onSaveClick = useCallback(() => {
+    console.log('todo');
+  }, [editorState]);
+
   return (
     <div className='flex flex-col h-full'>
       <div className='flex flex-row border rounded-md h-full'>
@@ -104,7 +108,7 @@ const AddNew = ({ user }: Props) => {
         ) : (
           <div>Done.</div>
         )}
-        <Button text='Save' enabled={!errorState} onClick={() => console.log('ok')} />
+        <Button text='Save' enabled={!errorState} onClick={onSaveClick} />
       </div>
     </div>
   );
