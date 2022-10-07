@@ -12,10 +12,12 @@ model posts {
   name        String?     @unique
   author      String
   publishdate DateTime    @db.Date
-  updatedate  DateTime    @db.Date
+  updatedate  DateTime?   @db.Date
   views       Int         @default(0)
   content     String
   title       String
+  isvisible   Boolean     @default(false)
+  images      images[]
   posts_tags  posts_tags?
 }
 
@@ -29,6 +31,14 @@ model posts_tags {
 
 model tags {
   id         Int         @id @default(autoincrement())
-  name       String
+  name       String      @unique(map: "tags_un")
   posts_tags posts_tags?
+}
+
+model images {
+  id     Int     @id @default(autoincrement())
+  src    String
+  alt    String?
+  postid Int     @default(autoincrement())
+  posts  posts   @relation(fields: [postid], references: [id], onDelete: Cascade, map: "images_fk")
 }
