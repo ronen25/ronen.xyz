@@ -2,7 +2,7 @@ interface Props {
   text: string;
   onClick?: () => void;
   enabled?: boolean;
-  type: 'button' | 'submit' | 'reset';
+  type?: 'button' | 'submit' | 'reset';
 }
 
 const Button = ({ text, type = 'button', enabled = true, onClick }: Props) => {
