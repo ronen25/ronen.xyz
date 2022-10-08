@@ -5,10 +5,12 @@ import { authOptions } from '../auth/[...nextauth]';
 
 import addPost from '../../../lib/blog/posts/addPost';
 import { PostSchema } from '../../../lib/blog/schemas/post';
+import getPosts from '../../../lib/blog/posts/getPosts';
 
 interface ResponseData {
   status: 'ok' | 'error';
   message?: string;
+  data?: any;
 }
 
 export default async function handler(
@@ -21,13 +23,15 @@ export default async function handler(
     return res.status(401).json({ status: 'error', message: 'Unauthorized' });
   }
 
-  // TODO: Add support for getting posts
   try {
     if (req.method === 'POST') {
       const postData = PostSchema.parse(req.body);
       await addPost(postData);
+    } else if (req.method === 'GET') {
+      const data = await getPosts(req.query);
+      return res.status(200).json({ status: 'ok', data: data });
     } else {
-      return res.status(405).json({ status: 'ok' });
+      return res.status(405).json({ status: 'error' });
     }
   } catch (error) {
     console.error(error);
