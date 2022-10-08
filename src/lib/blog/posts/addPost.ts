@@ -25,6 +25,14 @@ export default async (post: PostSchemaType) => {
     )
   );
 
+  // Add tags
+  await addTags(post.tags.map((tagName) => ({ name: tagName })));
+
+  const tagIds = await Promise.all(post.tags.map((tag) => tagNameToId(tag)));
+  const tagIdToPostIdMapping = tagIds.map((tagId) => ({
+    tagid: tagId,
+  }));
+
   // Add post
   const postData = await prisma.posts.create({
     data: {
@@ -35,23 +43,12 @@ export default async (post: PostSchemaType) => {
       name: post.name,
       views: 0,
       isvisible: post.isVisible,
+      posts_tags: {
+        createMany: {
+          data: tagIdToPostIdMapping,
+        },
+      },
     },
-  });
-
-  // Add tags
-  await addTags(post.tags.map((tagName) => ({ name: tagName })));
-
-  // Add tags to the post
-  const postId = postData.id;
-
-  const tagIds = await Promise.all(post.tags.map((tag) => tagNameToId(tag)));
-  const tagIdToPostIdMapping = tagIds.map((tagId) => ({
-    tagid: tagId,
-    postid: postId,
-  }));
-
-  await prisma.posts_tags.createMany({
-    data: tagIdToPostIdMapping,
   });
 
   return postData;
