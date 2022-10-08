@@ -8,31 +8,31 @@ datasource db {
 }
 
 model posts {
-  id          Int         @id @default(autoincrement())
-  name        String?     @unique
+  id          Int          @id @default(autoincrement())
+  name        String?      @unique
   author      String
-  publishdate DateTime    @db.Date
-  updatedate  DateTime?   @db.Date
-  views       Int         @default(0)
+  publishdate DateTime     @db.Date
+  updatedate  DateTime?    @db.Date
+  views       Int          @default(0)
   content     String
   title       String
-  isvisible   Boolean     @default(false)
+  isvisible   Boolean      @default(false)
   images      images[]
-  posts_tags  posts_tags?
+  posts_tags  posts_tags[]
 }
 
 model posts_tags {
   id     Int   @id @default(autoincrement())
   postid Int   @default(autoincrement())
   tagid  Int   @default(autoincrement())
-  posts  posts @relation(fields: [id], references: [id], onDelete: Cascade, map: "posts_tags_fk")
-  tags   tags  @relation(fields: [id], references: [id], onDelete: Cascade, map: "posts_tags_fk_1")
+  posts  posts @relation(fields: [postid], references: [id], onDelete: Cascade, map: "posts_tags_fk")
+  tags   tags  @relation(fields: [tagid], references: [id], onDelete: Cascade, map: "posts_tags_fk_1")
 }
 
 model tags {
-  id         Int         @id @default(autoincrement())
-  name       String      @unique(map: "tags_un")
-  posts_tags posts_tags?
+  id         Int          @id @default(autoincrement())
+  name       String       @unique(map: "tags_un")
+  posts_tags posts_tags[]
 }
 
 model images {
