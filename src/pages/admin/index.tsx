@@ -80,10 +80,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     };
   }
 
-  // Check if it's me :-)
-  // TODO: Figure out a better error handling
+  const authorizedUsers = process.env.ADMIN_AUTHORIZED_USERS?.split(',') ?? [];
   const { user } = session;
-  if (user?.email !== 'ronenk17@gmail.com') {
+  if (!authorizedUsers.includes(user?.email!)) {
     throw new Error('Bad user');
   }
 
