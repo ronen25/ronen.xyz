@@ -5,7 +5,7 @@ import LinkedinIcon from '../assets/linkedin.svg';
 
 const Footer = () => {
   return (
-    <footer className='flex flex-row bg-cornflower-500 fixed bottom-0 px-2 py-4 w-full'>
+    <footer className='flex flex-row bg-cornflower-500 px-2 py-4 w-full'>
       <div className='text-white ml-8 text-4xl align-top'>ronen.xyz</div>
       <ul className='text-white ml-4 mt-2'>
         <li>

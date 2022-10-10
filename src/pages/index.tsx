@@ -20,7 +20,7 @@ const Home = ({ githubStars, githubRepos, mostUsedLanguage, posts }: HomePage) =
       <div className='flex flex-col h-[42rem] p-1 bg-cornflower-500 rounded-b-lg'>
         <div className='text-8xl mt-48 text-white text-center'>Ronen Lapushner</div>
 
-        <div className='flex self-center mt-16 mb-16 h-40 w-9/12'>
+        <div className='flex self-center mt-16 mb-16 h-40 w-9/12 max-w-5xl'>
           <StatLinks
             githubRepos={githubRepos}
             githubStars={githubStars}
@@ -30,7 +30,7 @@ const Home = ({ githubStars, githubRepos, mostUsedLanguage, posts }: HomePage) =
       </div>
 
       <main className='container flex flex-row content-center justify-center h-full'>
-        <div className='font-mono'>Under Construction</div>
+        <div className='font-mono h-96'>Under Construction</div>
       </main>
     </>
   );
@@ -42,7 +42,6 @@ Home.getLayout = (page: ReactElement) => {
 
 export const getStaticProps = async () => {
   const { mostUsedLanguage, githubStars, githubRepos } = await fetchGithubData();
-  // TODO: Fetch top 10 blog posts or something (top 10 popular? newest?)
 
   return {
     props: {
