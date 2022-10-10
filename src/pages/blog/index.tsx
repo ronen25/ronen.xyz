@@ -1,30 +1,40 @@
-import { GetStaticProps, InferGetServerSidePropsType } from 'next';
 import BlogHeader from '../../components/blog/BlogHeader';
 import Footer from '../../components/Footer';
-import { getTop10PopularPosts } from '../../lib/PostData';
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import { isNumber, toNumber } from 'lodash';
+import getPosts from '../../lib/blog/posts/getPosts';
+import DateBrowser from '../../components/blog/DateBrowser';
 
-type PageProps = InferGetServerSidePropsType<typeof getStaticProps>;
+type PageProps = { posts: any } & InferGetServerSidePropsType<typeof getServerSideProps>;
 
-const BlogPage = ({ top10PopularPosts, postsByPage }: PageProps) => {
+const BlogPage = ({ posts, dates }: PageProps) => {
   return (
-    <div>
+    <div className='h-full'>
       <BlogHeader />
-      <main className='container mx-auto p-2 m-2 min-w-4xl max-w-8xl'>
-        <div className='font-mono text-center'>Under Construction</div>
+      <main className='container flex flex-row items-center justify-center mx-auto p-2 m-2 min-w-4xl max-w-8xl'>
+        <div className='flex-grow'>Under construction...</div>
+        <div className='mx-4 p-2 border-l-2 border-slate-300'>
+          <DateBrowser dates={dates} />
+        </div>
       </main>
       <Footer />
     </div>
   );
 };
 
-const getStaticProps: GetStaticProps = async (context) => {
-  const top10PopularPosts = await getTop10PopularPosts();
-  const postsByPage: string[] = [];
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  const requestedPage = isNumber(query['page']) ? toNumber(query['page']) : 1;
+
+  const posts = await getPosts({ page: requestedPage.toString() });
+  const dates = posts.map(({ publishdate }) => ({
+    year: publishdate.getUTCFullYear(),
+    month: publishdate.getUTCMonth(),
+  }));
 
   return {
     props: {
-      top10PopularPosts: top10PopularPosts,
-      postsByPage: postsByPage,
+      posts: JSON.parse(JSON.stringify(posts)), // https://github.com/vercel/next.js/issues/13209
+      dates,
     },
   };
 };
