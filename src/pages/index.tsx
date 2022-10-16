@@ -4,7 +4,7 @@ import type { InferGetStaticPropsType } from 'next';
 import MainLayout from '../components/MainLayout';
 import { NextPageWithLayout } from './_app';
 import StatLinks from '../components/StatLinks';
-import fetchGithubData from '../lib/GithubData';
+import fetchGithubData from '../lib/githubData';
 
 type HomePage = NextPageWithLayout & InferGetStaticPropsType<typeof getStaticProps>;
 
