@@ -18,7 +18,7 @@ const BlogPage = ({ postsByYear }: PageProps) => {
         ({
           attributes: { title, name, author, description, publishedAt, socialimage },
         }) => (
-          <div className='mb-1'>
+          <div key={name} className='mb-2'>
             <PostCard
               name={name}
               title={title}
@@ -32,7 +32,7 @@ const BlogPage = ({ postsByYear }: PageProps) => {
       );
 
       return (
-        <div>
+        <div key={year} className='mb-2'>
           <div className='mb-2 ml-1 text-3xl'>{year}</div>
           {postCards}
         </div>
