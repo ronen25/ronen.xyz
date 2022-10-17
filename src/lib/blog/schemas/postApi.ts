@@ -1,8 +1,7 @@
 import { z } from 'zod';
-import { PostShortSchema } from './post';
+import { PostShortSchema, PostNamesSchema, PostFullSchema } from './post';
 
-export const PostsShortResponse = z.object({
-  data: z.array(PostShortSchema),
+const MetaSchema = z.object({
   meta: z.object({
     pagination: z.object({
       page: z.number(),
@@ -12,3 +11,24 @@ export const PostsShortResponse = z.object({
     }),
   }),
 });
+
+export const PostsShortResponse = z.intersection(
+  z.object({
+    data: z.array(PostShortSchema),
+  }),
+  MetaSchema
+);
+
+export const PostFullResponse = z.intersection(
+  z.object({
+    data: z.array(PostFullSchema),
+  }),
+  MetaSchema
+);
+
+export const PostsNamesResponse = z.intersection(
+  z.object({
+    data: z.array(PostNamesSchema),
+  }),
+  MetaSchema
+);
