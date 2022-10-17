@@ -1,40 +1,65 @@
+import { useMemo } from 'react';
+import { GetStaticProps, InferGetStaticPropsType } from 'next';
+import { PostShortSchemaType } from '../../lib/blog/schemas/post';
+import { groupBy } from 'lodash';
+import getPosts from '../../lib/blog/getPosts';
 import BlogHeader from '../../components/blog/BlogHeader';
 import Footer from '../../components/Footer';
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import { isNumber, toNumber } from 'lodash';
-import getPosts from '../../lib/blog/posts/getPosts';
-import DateBrowser from '../../components/blog/DateBrowser';
+import PostCard from '../../components/blog/PostCard';
 
-type PageProps = { posts: any } & InferGetServerSidePropsType<typeof getServerSideProps>;
+type PageProps = {
+  postsByYear: { [year: string]: PostShortSchemaType[] };
+} & InferGetStaticPropsType<typeof getStaticProps>;
 
-const BlogPage = ({ posts, dates }: PageProps) => {
+const BlogPage = ({ postsByYear }: PageProps) => {
+  const postsCards = useMemo(() => {
+    return Object.entries(postsByYear).map(([year, posts]) => {
+      const postCards = posts.map(
+        ({
+          attributes: { title, name, author, description, publishedAt, socialimage },
+        }) => (
+          <div className='mb-1'>
+            <PostCard
+              name={name}
+              title={title}
+              author={author}
+              description={description}
+              publishedAt={new Date(Date.parse(publishedAt))}
+              socialImage={socialimage}
+            />
+          </div>
+        )
+      );
+
+      return (
+        <div>
+          <div className='mb-2 ml-1 text-3xl'>{year}</div>
+          {postCards}
+        </div>
+      );
+    });
+  }, [postsByYear]);
+
   return (
     <div className='h-full'>
       <BlogHeader />
-      <main className='container flex flex-row items-center justify-center mx-auto p-2 m-2 min-w-4xl max-w-8xl'>
-        <div className='flex-grow'>Under construction...</div>
-        <div className='mx-4 p-2 border-l-2 border-slate-300'>
-          <DateBrowser dates={dates} />
-        </div>
+      <main className='container flex flex-col items-center mx-auto p-2 m-2 min-w-3xl max-w-5xl h-screen'>
+        {postsCards}
       </main>
       <Footer />
     </div>
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const requestedPage = isNumber(query['page']) ? toNumber(query['page']) : 1;
-
-  const posts = await getPosts({ page: requestedPage.toString() });
-  const dates = posts.map(({ publishdate }) => ({
-    year: publishdate.getUTCFullYear(),
-    month: publishdate.getUTCMonth(),
-  }));
+export const getStaticProps: GetStaticProps = async () => {
+  const posts = await getPosts();
+  const postsByYear = groupBy(posts, (post) =>
+    new Date(Date.parse(post?.attributes.publishedAt)).getFullYear()
+  );
 
   return {
     props: {
-      posts: JSON.parse(JSON.stringify(posts)), // https://github.com/vercel/next.js/issues/13209
-      dates,
+      postsByYear: postsByYear,
     },
   };
 };
