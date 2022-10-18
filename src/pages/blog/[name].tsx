@@ -6,6 +6,7 @@ import MarkdownView from '../../components/blog/MarkdownView';
 import Footer from '../../components/Footer';
 import getFullPost from '../../lib/blog/getFullPost';
 import getPostsNames from '../../lib/blog/getPostsNames';
+import PermaLinkIcon from '../../assets/link-45deg.svg';
 
 type PostData = {
   postData: {
@@ -26,13 +27,31 @@ const Post = ({ postData }: PostData) => {
     <>
       <Head>
         <title>{`${title} - Ronen\'s Blog`}</title>
+        <meta property='og:title' content={title} key='title' />
       </Head>
 
       <BlogHeader name={name} title={title} />
-      <div className='flex justify-center items-center'>
-        <div className='min-w-3xl max-w-4xl'>
+      <div className='flex flex-col items-center'>
+        <main className='min-w-3xl max-w-4xl my-12'>
+          <div className='text-6xl'>{title}</div>
+
+          {/* Metadata */}
+          <div className='border-b-2'>
+            <div className='text-md pt-2'>Written by {author}</div>
+            <div className='text-md text-slate-600 pt-4 italic'>
+              Published: {new Date(publishedAt).toDateString()}
+            </div>
+            {publishedAt !== updatedAt ? (
+              <div className='text-md text-slate-600 italic pb-4'>
+                Last updated: {new Date(updatedAt).toDateString()}
+              </div>
+            ) : (
+              <></>
+            )}
+          </div>
+
           <MarkdownView>{content}</MarkdownView>
-        </div>
+        </main>
       </div>
       <Footer />
     </>

@@ -16,13 +16,13 @@ const MarkdownView = ({ children }: Props) => {
       className='font-serif'
       components={{
         h1({ children }) {
-          return <h1 className='my-6 text-5xl'>{children}</h1>;
+          return <h1 className='my-6 text-3xl font-bold'>{children}</h1>;
         },
         h2({ children }) {
-          return <h2 className='my-4 text-4xl'>{children}</h2>;
+          return <h2 className='my-4 text-2xl font-bold'>{children}</h2>;
         },
         h3({ children }) {
-          return <h3 className='my-4 text-3xl'>{children}</h3>;
+          return <h3 className='my-4 text-xl font-bold'>{children}</h3>;
         },
         p({ children }) {
           return <p className='my-4'>{children}</p>;
@@ -43,12 +43,7 @@ const MarkdownView = ({ children }: Props) => {
           );
         },
         li({ children }) {
-          return (
-            <li>
-              {` > `}
-              {children}
-            </li>
-          );
+          return <li className='list-disc ml-3'>{children}</li>;
         },
         code({ inline, className, children }) {
           if (inline) {
