@@ -1,6 +1,7 @@
-import { get } from 'lodash';
+import { useCallback } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
+import { get } from 'lodash';
 import BlogHeader from '../../components/blog/BlogHeader';
 import MarkdownView from '../../components/blog/MarkdownView';
 import Footer from '../../components/Footer';
@@ -23,6 +24,12 @@ type PostData = {
 const Post = ({ postData }: PostData) => {
   const { title, name, author, publishedAt, updatedAt, views, content } = postData;
 
+  const onPermalinkClick = useCallback(() => {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(`http://ronen.xyz/blog/${name}`);
+    }
+  }, [name]);
+
   return (
     <>
       <Head>
@@ -32,8 +39,16 @@ const Post = ({ postData }: PostData) => {
 
       <BlogHeader name={name} title={title} />
       <div className='flex flex-col items-center'>
-        <main className='min-w-3xl max-w-4xl my-12'>
-          <div className='text-6xl'>{title}</div>
+        <main className='max-w-4xl my-12 mx-5 md:mx-0'>
+          <div className='flex flex-row text-6xl'>
+            {title}
+            <PermaLinkIcon
+              width={48}
+              height={48}
+              className='visible md:invisible hover:fill-cyan cursor-pointer transition'
+              onClick={onPermalinkClick}
+            />
+          </div>
 
           {/* Metadata */}
           <div className='border-b-2'>

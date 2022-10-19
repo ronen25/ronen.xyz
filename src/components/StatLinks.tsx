@@ -14,7 +14,7 @@ interface Props {
 
 const StatLinks: React.FC<Props> = ({ mostUsedLanguage, githubRepos, githubStars }) => {
   return (
-    <div className='grow flex flex-row justify-between items-stretch'>
+    <div className='grow flex flex-col space-y-4 lg:space-y-0 lg:flex-row justify-between items-center lg:items-stretch'>
       <ValueLink title='Most Used Language' value={mostUsedLanguage} />
       <ValueLink
         title='Total Repos'
