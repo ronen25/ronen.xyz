@@ -11,13 +11,13 @@ const Footer = () => {
         <div className='text-white ml-4 lg:ml-8 text-4xl align-top'>ronen.xyz</div>
         <ul className='flex flex-row md:flex-col text-white ml-4 mt-2'>
           <FooterLink>
-            <Link href='/'>
-              <a className='md:hover:font-bold transition hover:text-cyan'>Home</a>
+            <Link href='/' className='md:hover:font-bold transition hover:text-cyan'>
+              Home
             </Link>
           </FooterLink>
           <FooterLink>
-            <Link href='/blog'>
-              <a className='md:hover:font-bold transition hover:text-cyan'>Blog</a>
+            <Link href='/blog' className='md:hover:font-bold transition hover:text-cyan'>
+              Blog
             </Link>
           </FooterLink>
           <FooterLink>
