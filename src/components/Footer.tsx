@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import GithubIcon from '../assets/github.svg';
 import LinkedinIcon from '../assets/linkedin.svg';
-import FooterLink from './ui/FooterLink';
+import FooterLink from './FooterLink';
 
 const Footer = () => {
   return (

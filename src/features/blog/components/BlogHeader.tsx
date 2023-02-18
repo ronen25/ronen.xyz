@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
-import HomeIcon from '../../assets/house-heart.svg';
-import PermaLinkIcon from '../../assets/link-45deg.svg';
+import HomeIcon from '../../../assets/house-heart.svg';
+import PermaLinkIcon from '../../../assets/link-45deg.svg';
 
 interface Props {
   title?: string;

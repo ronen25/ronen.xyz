@@ -3,9 +3,9 @@ import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { PostShortSchemaType } from '../../lib/blog/schemas/post';
 import { groupBy } from 'lodash';
 import getPosts from '../../lib/blog/getPosts';
-import BlogHeader from '../../components/blog/BlogHeader';
+import BlogHeader from '../../features/blog/components/BlogHeader';
 import Footer from '../../components/Footer';
-import PostCard from '../../components/blog/PostCard';
+import PostCard from '../../features/blog/components/PostCard';
 
 type PageProps = {
   postsByYear: { [year: string]: PostShortSchemaType[] };
