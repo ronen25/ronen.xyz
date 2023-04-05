@@ -21,7 +21,7 @@ export default () => {
 
   return (
     <div
-      class='border-2 p-3 cursor-pointer border-gray-400 w-24 flex justify-between transition-all'
+      class='border-2 p-3 cursor-pointer border-gray-400 w-24 flex justify-between transition-all justify-center'
       onClick={onButtonClick}
     >
       <span class='font-bold text-gray-400'>{prettyThemeName()}</span>

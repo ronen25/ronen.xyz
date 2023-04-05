@@ -2,11 +2,10 @@ export default () => {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
-      fill='none'
       viewBox='0 0 24 24'
       stroke-width={1.5}
       stroke='currentColor'
-      class='w-6 h-6'
+      class='w-6 h-6 stroke-gray-400 fill-none stroke-2'
     >
       <path
         stroke-linecap='round'
