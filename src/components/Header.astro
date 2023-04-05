@@ -1,0 +1,13 @@
+---
+import BackButton from "./BackButton.astro";
+import ThemeToggle from "./ThemeToggle";
+
+---
+
+<div class="flex justify-between">
+	<p class="font-black text-7xl">Ronen Lapushner</p>
+    <div class="flex items-center space-x-8">
+        <ThemeToggle client:only="solid" />
+        <BackButton />
+    </div>
+</div>
