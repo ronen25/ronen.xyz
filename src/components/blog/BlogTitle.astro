@@ -1,0 +1,10 @@
+---
+const { title, link } = Astro.props;
+---
+
+<a
+  href={`/blog/${link}`}
+  class='text-6xl font-black text-blue-700 hover:text-indigo-900 transition-colors'
+>
+  {title}
+</a>
