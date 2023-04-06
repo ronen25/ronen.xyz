@@ -7,8 +7,6 @@ updatedAt: 2022-10-16T21:25:00
 tags: ['personal', 'general', 'site', 'webdev']
 ---
 
-# Welcome!
-
 ## Hi. I'm Ronen.
 
 I have been developing software since I was 13 and will hopefully get to continue as long as I can :-)
@@ -25,7 +23,7 @@ Meaning, is C++ the best we can do as developers?
 
 My knowledge up until that point was purely from self-study; I had not done any academic coursework up to that point. So to me C++ was an obvious choice when writing high-performance applications.
 
-However, upon discovering [Rust](https://www.rust-lang.org/), my mindset was completely changed...
+However, upon discovering [Rust](https://www.rust-lang.org/), my mindset was completely changed\.\.\.
 
 Here I suddenly came upon a language (and corresponding toolset) that changed everything I thought about what to expect from a systems language;
 

@@ -1,10 +1,13 @@
 ---
 import Header from '../components/Header.astro';
+import BaseHead from '../components/BaseHead.astro';
 ---
 
 <html>
-  <Header />
+  <BaseHead title={'Ronen Lapushner'} description={"Ronen's Website and Blog"} />
+
   <body class='p-8'>
+    <Header />
     <slot />
   </body>
 </html>
