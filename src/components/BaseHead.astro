@@ -1,5 +1,5 @@
 ---
-const canonicalURL = new URL(Astro.url.pathname, Astro.url.origin);
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const { title, description, image = '/placeholder-social.jpg' } = Astro.props;
 ---
