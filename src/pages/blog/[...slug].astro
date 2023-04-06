@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+import BlogPostLayout from '../../layouts/BlogPostLayout.astro';
+import dateFormatter from '../../util/dateFormatter';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<BlogPostLayout title={entry.data.title} description={entry.data.description}>
+  <article
+    class='prose-lg prose-slate max-w-4xl prose-li:list-decimal prose-h1:text-zurich-blue-600 dark:prose-h1:text-zurich-blue-invert prose-h2:text-zurich-green-900 dark:prose-h2:text-zurich-green-invert prose-headings:font-bold prose-headings:mb-4 prose-h3:text-zurich-purple-900 dark:prose-h3:text-zurich-indigo-invert prose-a:underline'
+  >
+    <h1 class='font-black uppercase mb-1'>{entry.data.title}</h1>
+    <span class='font-black text-zurich-gray text-3xl'>
+      {dateFormatter(entry.data.publishedAt)}
+    </span>
+
+    <div class='mt-16'>
+      <Content />
+    </div>
+  </article>
+</BlogPostLayout>
