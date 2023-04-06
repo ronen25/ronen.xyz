@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import MainLayout from '../../layouts/MainLayout.astro';
-import BlogTitle from '../../components/blog/BlogTitle.astro';
+import BlogListTitle from '../../components/blog/BlogListTitle.astro';
 
 const posts = await getCollection('blog');
 ---
@@ -20,17 +20,17 @@ const posts = await getCollection('blog');
       {
         posts
           .sort((a, b) => {
-            if (a.data.publishedAt.getDate() < b.data.publishedAt.getDate()) {
+            if (a.data.publishedAt.getTime() > b.data.publishedAt.getTime()) {
               return -1;
             }
 
-            if (a.data.publishedAt.getDate() > b.data.publishedAt.getDate()) {
+            if (a.data.publishedAt.getTime() < b.data.publishedAt.getTime()) {
               return 1;
             }
 
             return 0;
           })
-          .map((item) => <BlogTitle title={item.data.title} link={item.data.name} />)
+          .map((item) => <BlogListTitle title={item.data.title} link={item.data.name} />)
       }
     </div>
   </MainLayout>

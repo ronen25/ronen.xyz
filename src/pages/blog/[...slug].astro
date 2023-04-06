@@ -2,6 +2,7 @@
 import { getCollection, getEntryBySlug } from 'astro:content';
 import MainLayout from '../../layouts/MainLayout.astro';
 import BlogPostLayout from '../../layouts/BlogPostLayout.astro';
+import dateFormatter from '../../util/dateFormatter';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -16,7 +17,16 @@ const { Content } = await entry.render();
 ---
 
 <BlogPostLayout title={entry.data.title} description={entry.data.description}>
-  <article class='prose-xl'>
-    <Content />
+  <article
+    class='prose-lg prose-slate max-w-4xl prose-li:list-decimal prose-h1:text-blue-900 prose-h2:text-green-900 prose-headings:font-bold prose-headings:mb-4 prose-h3:text-teal-900 prose-a:underline'
+  >
+    <h1 class='font-black uppercase mb-1'>{entry.data.title}</h1>
+    <span class='font-black text-gray-500 text-3xl'>
+      {dateFormatter(entry.data.publishedAt)}
+    </span>
+
+    <div class='mt-16'>
+      <Content />
+    </div>
   </article>
 </BlogPostLayout>

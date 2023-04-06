@@ -3,7 +3,6 @@ name: welcome
 title: Welcome!
 description: Welcome to my blog! In my debut post, I will give a brief introduction to myself and this blog.
 publishedAt: 2022-10-16T21:25:00
-updatedAt: 2022-10-16T21:25:00
 tags: ['personal', 'general', 'site', 'webdev']
 ---
 
@@ -13,7 +12,7 @@ I have been developing software since I was 13 and will hopefully get to continu
 
 Initially beginning with WinForm apps in .NET, I moved to using C++ as I was looking to learn how operating systems work as a systems developer. I enjoyed this greatly, and I got my first job at [Cyren](https://cyren.com) as a C++ developer after being released from the IDF.
 
-### Initial Beginnings
+## Initial Beginnings
 
 My first job was working on a legacy C++ app with about ~500K LoC (yes, I used Cloc. Yes, it excludes third party dependencies). It was a big challenge, especially since at that time, I had no experience with codebases that big; usually the only things I worked on were small-sized, self-contained codebases, that were either architect by me or by someone in the team I worked at.
 
@@ -23,7 +22,7 @@ Meaning, is C++ the best we can do as developers?
 
 My knowledge up until that point was purely from self-study; I had not done any academic coursework up to that point. So to me C++ was an obvious choice when writing high-performance applications.
 
-However, upon discovering [Rust](https://www.rust-lang.org/), my mindset was completely changed\.\.\.
+However, upon discovering [Rust](https://www.rust-lang.org/), my mindset was completely changed...
 
 Here I suddenly came upon a language (and corresponding toolset) that changed everything I thought about what to expect from a systems language;
 
@@ -35,7 +34,7 @@ Then I discovered [WebAssembly](https://webassembly.org/), which Rust supported 
 
 I wanted to learn Rust and write with it whatever I could.
 
-### A Change in Direction
+## A Change in Direction
 
 Sadly, wanting to do something and actually being allowed to do it are two different things, especially in a capitalist system.
 
@@ -59,7 +58,7 @@ By doing web development, I can realize this dream by building something that us
 
 So finally, we come to the creation of my own personal website...
 
-### Creating This Blog
+## Creating This Blog
 
 Most of my projects are done for my own sake; I wish to learn something new, and in the process, maybe get to something that will also help others.
 
