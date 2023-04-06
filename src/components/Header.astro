@@ -8,7 +8,6 @@ const { isForBlog = false } = Astro.props;
 <div class='flex flex-row justify-between sm:items-center'>
   <p class='font-black text-2xl sm:text-4xl md:text-6xl xl:text-7xl'>Ronen Lapushner</p>
   <div class='flex items-center space-x-8'>
-    <ThemeToggle client:only='solid' />
     <BackButton isForBlog={isForBlog} />
   </div>
 </div>
