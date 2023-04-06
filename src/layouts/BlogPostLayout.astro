@@ -13,8 +13,8 @@ const { title, description, image = '/placeholder-social.jpg' } = Astro.props;
 <html>
   <BaseHead title={title} description={description} image={image} />
 
-  <body class='p-8'>
-    <Header />
+  <body class='p-4 sm:p-8'>
+    <Header isForBlog={true} />
     <div class='flex justify-center mt-32'>
       <slot />
     </div>

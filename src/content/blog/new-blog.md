@@ -3,7 +3,6 @@ name: new-blog
 title: New Blog
 description: Welcome to my blog! In my debut post, I will give a brief introduction to myself and this blog.
 publishedAt: 2023-04-06T13:00:00
-updatedAt: 2023-04-06T13:00:00
 tags: ['site', 'webdev']
 ---
 
