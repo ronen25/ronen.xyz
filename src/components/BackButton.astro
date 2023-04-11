@@ -3,7 +3,10 @@ const { isForBlog = false } = Astro.props;
 ---
 
 <div>
-  <a href={isForBlog ? '/blog' : '/'}>
+  <a
+    href={isForBlog ? '/blog' : '/'}
+    aria-label={isForBlog ? 'Back to blog main page' : 'Back to homepage'}
+  >
     <svg
       xmlns='http://www.w3.org/2000/svg'
       fill='none'

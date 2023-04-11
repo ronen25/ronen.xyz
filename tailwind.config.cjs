@@ -19,7 +19,7 @@ module.exports = {
         'zurich-indigo-invert': '#ff2c95',
         'zurich-green': { 400: '#00a030', 900: '#015e1d' },
         'zurich-green-invert': '#00b837',
-        'zurich-amber': { 300: '#f08400', 900: '#9c5701' },
+        'zurich-amber': { 300: '#cf7200', 900: '#9c5701' },
         'zurich-purple': { 400: '#a30d65', 900: '#6e0a45' },
         'zurich-purple-invert': '#ff61dd',
       },
