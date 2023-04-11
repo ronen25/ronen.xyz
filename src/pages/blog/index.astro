@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import MainLayout from '../../layouts/MainLayout.astro';
 import BlogListTitle from '../../components/blog/BlogListTitle.astro';
+import postDateSorter from '../../util/postDateSorter';
 
 const posts = await getCollection('blog');
 ---
@@ -19,17 +20,7 @@ const posts = await getCollection('blog');
     <div class='mt-16 flex flex-col space-y-4'>
       {
         posts
-          .sort((a, b) => {
-            if (a.data.publishedAt.getTime() > b.data.publishedAt.getTime()) {
-              return -1;
-            }
-
-            if (a.data.publishedAt.getTime() < b.data.publishedAt.getTime()) {
-              return 1;
-            }
-
-            return 0;
-          })
+          .sort((a, b) => postDateSorter(a, b))
           .map((item) => <BlogListTitle title={item.data.title} link={item.data.name} />)
       }
     </div>
