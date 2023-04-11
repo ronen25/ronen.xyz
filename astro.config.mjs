@@ -1,10 +1,10 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 
-import solidJs from '@astrojs/solid-js';
+import robotsTxt from 'astro-robots-txt';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), solidJs()],
+  integrations: [tailwind(), robotsTxt()],
   site: 'https://www.ronen.xyz',
 });
