@@ -2,6 +2,9 @@
 import AboutMe from '../components/AboutMe.astro';
 import NavBar from '../components/NavBar.astro';
 import MainLayout from '../layouts/MainLayout.astro';
+import { inject } from '@vercel/analytics';
+
+inject();
 ---
 
 <html lang='en'>
