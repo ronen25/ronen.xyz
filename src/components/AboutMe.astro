@@ -1,3 +1,15 @@
+---
+const getSubTitle = () => {
+  const SUBTITLES = [
+    'I just like to draw pretty things on screen.',
+    'I am a fullstack developer passionate about web development.',
+  ];
+  const randomIndex = Math.floor(Math.random() * SUBTITLES.length);
+
+  return SUBTITLES[randomIndex];
+};
+---
+
 <div class='flex flex-col md:items-center'>
   <div class='flex flex-col sm:flex-row items-baseline'>
     <span class='text-9xl items-baseline'>Hi.</span>
@@ -5,6 +17,6 @@
   </div>
 
   <div class='text-lg sm:text-2xl text-zurich-gray mt-2'>
-    I am a fullstack developer passionate about web development.
+    {getSubTitle()}
   </div>
 </div>
