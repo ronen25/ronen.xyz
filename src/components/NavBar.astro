@@ -1,60 +1,45 @@
-<div class='flex flex-col space-y-4'>
-  <a
-    href='/blog'
-    class='flex uppercase font-bold text-5xl dark:text-zurich-green-invert text-zurich-green-400 hover:text-green-900 transition'
-  >
-    <svg
-      xmlns='http://www.w3.org/2000/svg'
-      fill='none'
-      viewBox='0 0 24 24'
-      stroke-width='1.5'
-      stroke='currentColor'
-      class='w-10 h-10 mr-2'
-    >
-      <path
-        stroke-linecap='round'
-        stroke-linejoin='round'
-        d='M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3'></path>
-    </svg>
-     Blog</a
-  >
-  <a
-    href='https://github.com/ronen25'
-    class='flex uppercase font-bold text-5xl dark:text-zurich-amber text-zurich-amber-300 hover:text-zurich-amber-900 transition'
-  >
-    <svg
-      xmlns='http://www.w3.org/2000/svg'
-      fill='none'
-      viewBox='0 0 24 24'
-      stroke-width='1.5'
-      stroke='currentColor'
-      class='w-10 h-10 mr-2'
-    >
-      <path
-        stroke-linecap='round'
-        stroke-linejoin='round'
-        d='M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3'></path>
-    </svg>
-     Github</a
-  >
-  <a
-    href='https://www.linkedin.com/in/ronen-lapushner/'
-    class='flex uppercase font-bold text-5xl dark:text-zurich-blue-invert text-zurich-blue-400 hover:text-zurich-blue-900 transition'
-  >
-    <svg
-      xmlns='http://www.w3.org/2000/svg'
-      fill='none'
-      viewBox='0 0 24 24'
-      stroke-width='1.5'
-      stroke='currentColor'
-      class='w-10 h-10 mr-2'
-    >
-      <path
-        stroke-linecap='round'
-        stroke-linejoin='round'
-        d='M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3'></path>
-    </svg>
+---
+import NavbarLink from './NavbarLink.astro';
 
-     LinkedIn</a
-  >
-</div>
+const LINKS = [
+  {
+    title: 'Blog',
+    link: '/blog',
+    classes: 'dark:text-zurich-green-invert text-zurich-green-400 hover:text-green-900',
+  },
+  {
+    title: 'Github',
+    link: 'https://github.com/ronen25',
+    classes: 'dark:text-zurich-amber text-zurich-amber-300 hover:text-zurich-amber-900',
+    isSmall: false,
+  },
+  {
+    title: 'Linkedin',
+    link: 'https://www.linkedin.com/in/ronen-lapushner/',
+    classes:
+      'dark:text-zurich-blue-invert text-zurich-blue-400 hover:text-zurich-blue-900',
+    isSmall: false,
+  },
+  {
+    title: 'Resume',
+    link: '/assets/ronen-lapushner-cv.pdf',
+    classes:
+      'dark:text-zurich-pink text-zurich-pink-invert hover:text-zurich-dark-purple',
+    isSmall: false,
+  },
+  {
+    title: 'Saffron Software',
+    link: 'https://saffron.software',
+    classes: 'text-saffron hover:text-saffron-dark',
+    isSmall: true,
+  },
+];
+---
+
+<ul class='flex flex-col space-y-1'>
+  {
+    LINKS.map(({ title, link, classes, isSmall }) => (
+      <NavbarLink title={title} link={link} classes={classes} isSmall={isSmall} />
+    ))
+  }
+</ul>

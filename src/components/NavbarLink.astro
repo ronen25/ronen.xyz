@@ -1,0 +1,13 @@
+---
+const { title, link, classes, isSmall } = Astro.props;
+---
+
+<div class={'flex uppercase font-bold text-5xl transition ' + classes}>
+  <a href={link} class='flex flex-row items-center'>
+    <span class='text-6xl pr-2'>+</span>
+    <span class='text-5xl flex flex-row'>
+      {title}
+      {isSmall && <span class='text-sm lowercase ml-1'>(ext)</span>}
+    </span>
+  </a>
+</div>
